@@ -7,7 +7,7 @@ func _ready():
 
 func _on_start_button_pressed():
 	print("Start button pressed")
-	get_tree().change_scene_to_file("res://scenes/Scene1.tscn")  # Đảm bảo rằng đường dẫn đúng
+	get_tree().change_scene_to_file("res://scenes/Graph.tscn")  # Đảm bảo rằng đường dẫn đúng
 
 func _on_quit_button_pressed():
 	print("Quit button pressed")

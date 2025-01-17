@@ -10,24 +10,27 @@ var chart_top  # Top position of the chart
 var chart_height  # Height of the chart
 var chart_width  # Width of the chart
 var scale_factor  # Scale factor for shrinking the chart
-var offset = 1000
+var offset = 50  # Padding for chart positioning
+var chart_left
 
 func _ready():
 	randomize()  # Ensure randomness for generated data
 
 	# Get the dimensions of the screen
-	screen_width = get_viewport().size.x + 50
-	screen_height = get_viewport().size.y + 50
+	screen_width = get_viewport().size.x
+	screen_height = get_viewport().size.y
 
-	# Set chart dimensions (1/4 of the screen)
-	chart_width = screen_width / 12
-	chart_height = screen_height / 12
-	chart_top = 10  # Small padding from the top
+	# Set chart dimensions
+	chart_width = screen_width * 0.6  # 60% of screen width
+	chart_height = screen_height * 0.6  # 60% of screen height
+	chart_top = (screen_height - chart_height) / 2 + 150  # Move chart down a bit
+	chart_left = (screen_width - chart_width) / 2  - 100  # Center horizontally
 	scale_factor = chart_height / 200.0  # Scale to fit the chart into 1/4 height
 
 	# Adjust bar width and spacing according to scale factor
-	bar_width *= scale_factor
-	bar_spacing *= scale_factor
+	bar_width *= scale_factor # Thu nhỏ width của các thanh nến
+	bar_spacing *= scale_factor  # Thu nhỏ khoảng cách giữa các thanh nến
+
 
 	# Generate initial candlestick data
 	generate_initial_data()
@@ -57,10 +60,10 @@ func _draw():
 		var low_price = data["low"]
 
 		# Calculate candlestick positions relative to camera
-		var x_pos = i * (bar_width + bar_spacing) - view_offset
+		var x_pos = chart_left + i * (bar_width + bar_spacing) - view_offset
 		if x_pos + bar_width < 0:  # Skip drawing off-screen to the left
 			continue
-		if x_pos > chart_width:  # Stop drawing if beyond the right edge
+		if x_pos > chart_left + chart_width:  # Stop drawing if beyond the right edge
 			break
 
 		# Scale prices to fit the chart height
@@ -79,15 +82,9 @@ func _draw():
 		var body_color = Color(0, 1, 0) if close_price > open_price else Color(1, 0, 0)
 		draw_rect(Rect2(Vector2(x_pos, min(y_open, y_close)), Vector2(bar_width, abs(y_open - y_close))), body_color)
 
-	# Draw chart border
-	draw_line(Vector2(screen_width - chart_width + offset, chart_top), Vector2(screen_width + offset, chart_top), Color(0, 0, 0), 2)  # Top border
-	draw_line(Vector2(screen_width - chart_width + offset, chart_top + chart_height), Vector2(screen_width + offset, chart_top + chart_height), Color(0, 0, 0), 2)  # Bottom border
-	draw_line(Vector2(screen_width - chart_width + offset, chart_top), Vector2(screen_width - chart_width + offset, chart_top + chart_height), Color(0, 0, 0), 2)  # Left border
-	draw_line(Vector2(screen_width + offset, chart_top), Vector2(screen_width + offset, chart_top + chart_height), Color(0, 0, 0), 2)  # Right border
-
 func _on_button_pressed() -> void:
 	# Simulate camera movement (rightward for example)
-	view_offset += 95 * 0.2  # Adjust speed here
+	view_offset += bar_width + bar_spacing  # Adjust this to move through one bar width on click
 	if view_offset > (data_points.size() - 1) * (bar_width + bar_spacing) - chart_width:
 		# Generate more candlesticks as camera approaches the edge
 		data_points.append(generate_random_candlestick())
