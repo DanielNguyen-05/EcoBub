@@ -11,9 +11,16 @@ config_version=5
 [application]
 
 config/name="Bubble"
-run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+
+[autoload]
+
+MarketManager="*res://scripts/MarketManager.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [dotnet]
 
@@ -21,4 +28,5 @@ project/assembly_name="Bubble"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"

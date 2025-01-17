@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnht67upk063y"]
+
+[ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_reqkr"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_reqkr")
+
+[node name="Buy" type="Button" parent="."]
+offset_left = 391.0
+offset_top = 792.0
+offset_right = 614.0
+offset_bottom = 957.0
+text = "Buy"
+
+[node name="Sell" type="Button" parent="."]
+offset_left = 1211.0
+offset_top = 829.0
+offset_right = 1386.0
+offset_bottom = 961.0
+text = "Sell"
+
+[connection signal="pressed" from="Buy" to="." method="_on_buy_pressed"]
+[connection signal="pressed" from="Sell" to="." method="_on_sell_pressed"]
