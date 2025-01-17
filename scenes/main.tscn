@@ -33,6 +33,16 @@ offset_right = 554.0
 offset_bottom = 877.0
 text = "Buy"
 
+[node name="StockInfoDropdown" type="OptionButton" parent="ButtonGroup"]
+offset_left = 1772.0
+offset_top = 5.0
+offset_right = 1912.0
+offset_bottom = 47.0
+item_count = 2
+popup/item_0/text = "AAA"
+popup/item_1/text = "BBB"
+popup/item_1/id = 1
+
 [node name="NewsTickerLayer" type="CanvasLayer" parent="."]
 script = ExtResource("3_7kh45")
 
@@ -53,6 +63,8 @@ text = "Read More"
 
 [node name="NewsPopup" parent="." instance=ExtResource("4_vdd20")]
 
+[connection signal="buy_confirmed" from="BuyPopup" to="." method="_on_buy_popup_buy_confirmed"]
 [connection signal="pressed" from="ButtonGroup/Sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="ButtonGroup/Buy" to="." method="_on_buy_pressed"]
+[connection signal="item_selected" from="ButtonGroup/StockInfoDropdown" to="." method="_on_stock_info_dropdown_item_selected"]
 [connection signal="pressed" from="NewsTickerLayer/ReadMore" to="NewsTickerLayer" method="_on_read_more_pressed"]
