@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc8vyst14g4bm"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_j74tf"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_j74tf")
+
+[node name="IncreaseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 97.0
+offset_right = 790.0
+offset_bottom = 258.0
+text = "Increase"
+
+[node name="DecreaseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 345.0
+offset_right = 791.0
+offset_bottom = 506.0
+text = "Decrease
+"
