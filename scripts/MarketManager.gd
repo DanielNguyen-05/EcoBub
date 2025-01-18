@@ -32,7 +32,7 @@ var selected_stock = null
 func _ready() -> void:	
 	# Load news from CSV
 	load_news_from_csv("res://assets/news.csv")
-	# news_ticker.update_news(news_list[current_news_index].title, news_list[current_news_index].content)
+	news_ticker.update_news(news_list[current_day].title, news_list[current_day].content)
 	print("MarketManager ready!") # Just to confirm it's loaded
 	return
 	
