@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cdxtxs5s1ooa4"
+path="res://.godot/imported/Newspaper Close.mp3-f19291f5d1a4a9e4b53ea800bacf048c.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Newspaper Close.mp3"
+dest_files=["res://.godot/imported/Newspaper Close.mp3-f19291f5d1a4a9e4b53ea800bacf048c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -2,7 +2,7 @@ extends Panel
 
 @onready var ntitle = get_node("Title")
 @onready var ncontent = get_node("Content")
-@onready var click = $"../Click Button"
+@onready var news_close = $"../Sounds/News Close"
 
 func _ready():
 	hide() # Hide initially
@@ -13,6 +13,6 @@ func set_news_data(title, content):
 
 
 func _on_close_pressed() -> void:
-	click.play()
+	news_close.play(0.5)
 	hide()
 	pass # Replace with function body.

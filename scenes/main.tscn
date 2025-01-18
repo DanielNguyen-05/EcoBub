@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=14 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="PackedScene" uid="uid://b8ektgpchyvvi" path="res://scenes/BuyPopup.tscn" id="2_iu3ry"]
+[ext_resource type="PackedScene" uid="uid://ddtac3csy1k83" path="res://scenes/SellPopup.tscn" id="3_1u47s"]
 [ext_resource type="PackedScene" uid="uid://duor5lu3htgay" path="res://scenes/news_ticker_layer.tscn" id="3_7vwx8"]
 [ext_resource type="PackedScene" uid="uid://b31usg7j8hiog" path="res://scenes/click_button.tscn" id="3_flcfr"]
 [ext_resource type="Script" path="res://scripts/NewsTicker.gd" id="4_qyicq"]
@@ -10,11 +11,23 @@
 [ext_resource type="PackedScene" uid="uid://bn80nsqirvcw0" path="res://scenes/events_music.tscn" id="8_ojl3h"]
 [ext_resource type="Script" path="res://scripts/events_music.gd" id="9_v8ggc"]
 [ext_resource type="AudioStream" uid="uid://ch4frhk1uci63" path="res://assets/sfx/Button Can't be Pressed.wav" id="10_krrni"]
+[ext_resource type="AudioStream" uid="uid://dedw0hnvww6y" path="res://assets/sfx/Newspaper Open.mp3" id="12_8gdnh"]
+[ext_resource type="AudioStream" uid="uid://cdxtxs5s1ooa4" path="res://assets/sfx/Newspaper Close.mp3" id="13_ah6mi"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_g7qtt")
 
 [node name="BuyPopup" parent="." instance=ExtResource("2_iu3ry")]
+offset_left = 734.0
+offset_top = 344.0
+offset_right = 734.0
+offset_bottom = 344.0
+
+[node name="SellPopup" parent="." instance=ExtResource("3_1u47s")]
+offset_left = 734.0
+offset_top = 344.0
+offset_right = 734.0
+offset_bottom = 344.0
 
 [node name="ButtonGroup" type="Node2D" parent="."]
 
@@ -58,18 +71,28 @@ offset_top = 325.0
 offset_right = 1451.0
 offset_bottom = 533.0
 
-[node name="Click Button" parent="." instance=ExtResource("3_flcfr")]
+[node name="Sounds" type="Node2D" parent="."]
 
-[node name="BG Music" type="AudioStreamPlayer2D" parent="."]
+[node name="Click Button" parent="Sounds" instance=ExtResource("3_flcfr")]
+
+[node name="BG Music" type="AudioStreamPlayer2D" parent="Sounds"]
 bus = &"BG"
 script = ExtResource("7_1nra2")
 
-[node name="Events Music" parent="." instance=ExtResource("8_ojl3h")]
+[node name="Events Music" parent="Sounds" instance=ExtResource("8_ojl3h")]
 script = ExtResource("9_v8ggc")
 
-[node name="Non Clickable Button" parent="." instance=ExtResource("3_flcfr")]
+[node name="Non Clickable Button" parent="Sounds" instance=ExtResource("3_flcfr")]
 stream = ExtResource("10_krrni")
 bus = &"Non Click"
+
+[node name="News Open" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("12_8gdnh")
+bus = &"News Open"
+
+[node name="News Close" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("13_ah6mi")
+bus = &"News Close"
 
 [connection signal="buy_confirmed" from="BuyPopup" to="." method="_on_buy_popup_buy_confirmed"]
 [connection signal="pressed" from="ButtonGroup/Next" to="." method="_on_next_pressed"]

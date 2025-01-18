@@ -9,6 +9,7 @@ var stock_list = [
 ]
 
 @onready var buy_popup = get_node("BuyPopup")
+@onready var sell_popup = get_node("SellPopup")
 @onready var stock_info_dropdown = get_node("ButtonGroup/StockInfoDropdown")
 
 var selected_stock = null
@@ -47,6 +48,8 @@ func _on_buy_pressed() -> void:
 
 
 func _on_sell_pressed() -> void:
+	sell_popup.update_stock_name()
+	sell_popup.show()
 	print("Sell pressed")
 	$"Click Button".play()
 	pass # Replace with function body.
