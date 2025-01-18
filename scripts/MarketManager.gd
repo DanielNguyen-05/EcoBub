@@ -24,7 +24,7 @@ var current_day = 0
 signal networth_update(net)
 signal panic_update(net)
 
-var game_duration = 180.0
+var game_duration = 300.0
 var game_over = false
 var panic_meter = 0.0
 
@@ -43,7 +43,7 @@ var selected_stock = null
 var selected_story = 0
 
 func getnews(listid, day):
-	day = day % 19
+	day = day % 18
 	if listid == 0:
 		return news_list0[day]
 	elif listid == 1:
@@ -195,19 +195,21 @@ func update_stock_prices():
 	pass
 	
 var panic_state = 0
-
+var is_trigger_gameover = false
 func _process(delta: float) -> void:
-	game_duration -= delta
-	if game_duration <= 0:
-		game_over = true
-	if game_over:
+	if game_over && is_trigger_gameover == false:
 		trigger_market_crash()
-	if panic_meter > 23 && panic_state == 0:
-		emit_signal("panic_update", 1)
-		panic_state += 1
-	if panic_meter > 46 && panic_state == 1:
-		emit_signal("panic_update", 2)
-		panic_state += 1
+		is_trigger_gameover = true
+	if game_over == false && game_duration > 0:
+		game_duration -= delta
+		if game_duration <= 0:
+			game_over = true
+		if panic_meter > 23 && panic_state == 0:
+			emit_signal("panic_update", 1)
+			panic_state += 1
+		if panic_meter > 46 && panic_state == 1:
+			emit_signal("panic_update", 2)
+			panic_state += 1
 	
 func trigger_market_crash():
 	# TODO: Play crash effect
@@ -224,6 +226,7 @@ func trigger_market_crash():
 		networth += value
 	networth += cash
 	emit_signal("networth_update", networth)
+	panic_meter = 0
 	pass # Implement later
 
 

@@ -29,7 +29,6 @@ func _on_quit_button_pressed() -> void:
 
 
 func _on_main_networth_update(net: Variant) -> void:
-	print("Connected")
 	final.text = str(ceil(net * 100)/100)
 	show()
 	pass # Replace with function body.
