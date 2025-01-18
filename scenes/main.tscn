@@ -119,10 +119,10 @@ offset_bottom = 159.0
 theme_override_font_sizes/font_size = 38
 
 [node name="Portfolio" type="Button" parent="World/ButtonGroup"]
-offset_left = 71.0
-offset_top = 45.0
-offset_right = 350.0
-offset_bottom = 147.0
+offset_left = 58.0
+offset_top = 27.0
+offset_right = 337.0
+offset_bottom = 129.0
 theme_override_font_sizes/font_size = 46
 theme_override_styles/focus = SubResource("StyleBoxEmpty_durkh")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_oa7kn")
@@ -165,9 +165,9 @@ theme_override_font_sizes/font_size = 46
 
 [node name="Stock Price Icon" type="TextureRect" parent="World/ButtonGroup"]
 offset_left = 1149.0
-offset_top = 46.0
+offset_top = 30.0
 offset_right = 1285.0
-offset_bottom = 175.0
+offset_bottom = 159.0
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("20_vdvbn")
 
@@ -188,8 +188,6 @@ offset_right = 1819.0
 offset_bottom = 982.0
 
 [node name="PortfolioPanel2" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
-
-[node name="PopupGroup2" type="Node2D" parent="World"]
 
 [node name="NewsTickerLayer" parent="World" instance=ExtResource("20_q4l58")]
 layer = -1

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://duor5lu3htgay"]
+[gd_scene load_steps=4 format=3 uid="uid://duor5lu3htgay"]
 
 [ext_resource type="Script" path="res://scripts/NewsTicker.gd" id="1_yyvao"]
 [ext_resource type="Texture2D" uid="uid://dqcvnwqaxe0u6" path="res://assets/news.png" id="2_qjpli"]
+[ext_resource type="Texture2D" uid="uid://d3urdn8qkrpy0" path="res://assets/bookdone.png" id="3_ip37k"]
 
 [node name="NewsTickerLayer" type="CanvasLayer"]
 script = ExtResource("1_yyvao")
@@ -22,5 +23,6 @@ offset_top = 827.0
 offset_right = 315.0
 offset_bottom = 1112.0
 texture_normal = ExtResource("2_qjpli")
+texture_pressed = ExtResource("3_ip37k")
 
 [connection signal="pressed" from="ReadMore" to="." method="_on_read_more_pressed"]
