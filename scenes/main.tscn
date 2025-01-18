@@ -1,11 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=25 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="Script" path="res://scripts/BGMusic.gd" id="2_3w3vu"]
-[ext_resource type="PackedScene" uid="uid://b8ektgpchyvvi" path="res://scenes/BuyPopup.tscn" id="2_iu3ry"]
 [ext_resource type="Script" path="res://scripts/NewsTicker.gd" id="3_7kh45"]
 [ext_resource type="Script" path="res://scripts/World.gd" id="3_b1veo"]
-[ext_resource type="PackedScene" uid="uid://cyxq6luvtgxq8" path="res://scenes/SellPopup.tscn" id="3_dohl7"]
 [ext_resource type="PackedScene" uid="uid://brbqxqii34i3e" path="res://scenes/NewsPopup.tscn" id="4_vdd20"]
 [ext_resource type="PackedScene" uid="uid://d0mkig123s7oi" path="res://scenes/Menu.tscn" id="6_6860q"]
 [ext_resource type="PackedScene" uid="uid://h2pilxeen8p4" path="res://scenes/PortfolioPanel.tscn" id="7_sbtu7"]
@@ -20,6 +18,12 @@
 [ext_resource type="AudioStream" uid="uid://dedw0hnvww6y" path="res://assets/sfx/Newspaper Open.mp3" id="12_qslfr"]
 [ext_resource type="Texture2D" uid="uid://ckfei36lcu7yi" path="res://assets/Sprite/buydone.png" id="13_pekh2"]
 [ext_resource type="AudioStream" uid="uid://cdxtxs5s1ooa4" path="res://assets/sfx/Newspaper Close.mp3" id="13_q52i6"]
+[ext_resource type="Texture2D" uid="uid://bx4me5li8ewc6" path="res://assets/Sprite/Increase 1.png" id="15_ikh4o"]
+[ext_resource type="Texture2D" uid="uid://d1cryeb515nsg" path="res://assets/Sprite/Increase 2.png" id="16_at32f"]
+[ext_resource type="Texture2D" uid="uid://chcffb6ycr20r" path="res://assets/Sprite/Decrease 1.png" id="17_kx5hf"]
+[ext_resource type="Script" path="res://scripts/BuyButton.gd" id="17_t2vlu"]
+[ext_resource type="Texture2D" uid="uid://bg4wqe8g5730k" path="res://assets/Sprite/Decrease 2.png" id="18_d64oo"]
+[ext_resource type="Script" path="res://scripts/SellButton.gd" id="20_c2s7w"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_g7qtt")
@@ -33,18 +37,6 @@ script = ExtResource("2_3w3vu")
 script = ExtResource("3_b1veo")
 
 [node name="PopupGroup" type="Node2D" parent="World"]
-
-[node name="BuyPopup" parent="World/PopupGroup" instance=ExtResource("2_iu3ry")]
-offset_left = 251.0
-offset_top = 278.0
-offset_right = 251.0
-offset_bottom = 278.0
-
-[node name="SellPopup" parent="World/PopupGroup" instance=ExtResource("3_dohl7")]
-offset_left = 118.0
-offset_top = 245.0
-offset_right = 118.0
-offset_bottom = 245.0
 
 [node name="NewsPopup" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
 offset_left = 95.0
@@ -62,27 +54,29 @@ script = ExtResource("8_aqa8o")
 [node name="ButtonGroup" type="Node2D" parent="World"]
 
 [node name="Next" type="TextureButton" parent="World/ButtonGroup"]
-offset_left = 1548.0
-offset_top = 692.0
-offset_right = 1854.0
-offset_bottom = 937.0
+offset_left = 1536.0
+offset_top = 663.0
+offset_right = 1842.0
+offset_bottom = 908.0
 texture_normal = ExtResource("10_6tmc0")
 
 [node name="Sell" type="TextureButton" parent="World/ButtonGroup"]
-offset_left = 1275.0
-offset_top = 718.0
-offset_right = 1479.0
-offset_bottom = 922.0
+offset_left = 1181.0
+offset_top = 689.0
+offset_right = 1385.0
+offset_bottom = 893.0
 texture_normal = ExtResource("10_m6nbu")
 texture_pressed = ExtResource("11_dkm2n")
+script = ExtResource("20_c2s7w")
 
 [node name="Buy" type="TextureButton" parent="World/ButtonGroup"]
-offset_left = 968.0
-offset_top = 718.0
-offset_right = 1191.0
-offset_bottom = 922.0
+offset_left = 886.0
+offset_top = 689.0
+offset_right = 1109.0
+offset_bottom = 893.0
 texture_normal = ExtResource("12_4bndq")
 texture_pressed = ExtResource("13_pekh2")
+script = ExtResource("17_t2vlu")
 
 [node name="StockInfoDropdown" type="OptionButton" parent="World/ButtonGroup"]
 offset_left = 1772.0
@@ -98,6 +92,31 @@ popup/item_1/id = 1
 offset_right = 8.0
 offset_bottom = 8.0
 text = "1000$"
+
+[node name="Increase" type="TextureButton" parent="World/ButtonGroup"]
+offset_left = 533.0
+offset_top = 731.0
+offset_right = 668.0
+offset_bottom = 863.0
+texture_normal = ExtResource("15_ikh4o")
+texture_pressed = ExtResource("16_at32f")
+
+[node name="Number" type="Label" parent="World/ButtonGroup"]
+offset_left = 259.0
+offset_top = 763.0
+offset_right = 538.0
+offset_bottom = 835.0
+theme_override_font_sizes/font_size = 55
+text = "0"
+horizontal_alignment = 1
+
+[node name="Decrease" type="TextureButton" parent="World/ButtonGroup"]
+offset_left = 100.0
+offset_top = 721.0
+offset_right = 275.0
+offset_bottom = 860.0
+texture_normal = ExtResource("17_kx5hf")
+texture_pressed = ExtResource("18_d64oo")
 
 [node name="NewsTickerLayer" type="CanvasLayer" parent="World"]
 script = ExtResource("3_7kh45")
@@ -136,11 +155,13 @@ stream = ExtResource("13_q52i6")
 bus = &"News Close"
 
 [connection signal="tree_exited" from="Menu" to="." method="_on_menu_tree_exited"]
-[connection signal="buy_confirmed" from="World/PopupGroup/BuyPopup" to="." method="_on_buy_popup_buy_confirmed"]
-[connection signal="sell_confirmed" from="World/PopupGroup/SellPopup" to="." method="_on_sell_popup_sell_confirmed"]
 [connection signal="pressed" from="World/ButtonGroup/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Sell" to="." method="_on_sell_pressed"]
+[connection signal="sell_confirmed" from="World/ButtonGroup/Sell" to="." method="_on_sell_sell_confirmed"]
+[connection signal="buy_confirmed" from="World/ButtonGroup/Buy" to="." method="_on_buy_buy_confirmed"]
 [connection signal="pressed" from="World/ButtonGroup/Buy" to="." method="_on_buy_pressed"]
 [connection signal="item_selected" from="World/ButtonGroup/StockInfoDropdown" to="." method="_on_stock_info_dropdown_item_selected"]
 [connection signal="pressed" from="World/ButtonGroup/Portfolio" to="." method="_on_portfolio_pressed"]
+[connection signal="pressed" from="World/ButtonGroup/Increase" to="." method="_on_increase_pressed"]
+[connection signal="pressed" from="World/ButtonGroup/Decrease" to="." method="_on_decrease_pressed"]
 [connection signal="pressed" from="World/NewsTickerLayer/ReadMore" to="World/NewsTickerLayer" method="_on_read_more_pressed"]

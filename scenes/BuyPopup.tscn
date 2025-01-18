@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8ektgpchyvvi"]
 
-[ext_resource type="Script" path="res://scripts/BuyPopup.gd" id="1_7h5xr"]
+[ext_resource type="Script" path="res://scripts/BuyButton.gd" id="1_7h5xr"]
 
 [node name="BuyPopup" type="Panel"]
 offset_right = 1406.0
