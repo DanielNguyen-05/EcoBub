@@ -118,7 +118,7 @@ func get_owned_stocks():
 
 func affect_later_stock_price(stockID, impact):
 	# TODO: Implement this function to affect the stock price more realistically
-	stock_list[stockID]["later_price"] += impact
+	stock_list[stockID]["later_price"] += impact * stock_list[stockID]["growth_rate"]
 	if impact > 2:
 		stock_list[stockID]["volatility"] += 0.2
 
