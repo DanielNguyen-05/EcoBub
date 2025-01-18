@@ -73,7 +73,7 @@ func buy_stock(stockid: int, shares_quantity: int) -> void:
 	for owned in owned_stocks:
 		if owned.name == stock_name:
 			owned.shares += shares_quantity
-			portfolio_button.text = str(cash) + "$"
+			portfolio_button.text = str(ceil(cash * 100)/100) + "$"
 			sell_popup.update_owned(owned_stocks)
 			return
 	
@@ -81,11 +81,9 @@ func buy_stock(stockid: int, shares_quantity: int) -> void:
 	var new_stock = {"name": stock_name, "shares": shares_quantity}
 	owned_stocks.append(new_stock)
 	
-	portfolio_button.text = str(cash) + "$"
+	portfolio_button.text = str(ceil(cash * 100)/100) + "$"
 	
 	sell_popup.update_owned(owned_stocks)
-	
-	print(owned_stocks)
 	
 	pass # Implement later
 
@@ -101,7 +99,7 @@ func sell_stock(stockid: int, shares_quantity: int) -> void:
 				owned_stocks.erase(owned)
 				pass
 	
-	portfolio_button.text = str(cash) + "$"
+	portfolio_button.text = str(ceil(cash * 100)/100) + "$"
 	return # Implement later
 
 # --- Other Game Logic ---
@@ -174,7 +172,7 @@ func _on_sell_popup_sell_confirmed(quantity: Variant) -> void:
 
 
 func _on_portfolio_pressed() -> void:
-	portfolio.update_portfolio(cash, owned_stocks)
+	portfolio.update_portfolio(cash, owned_stocks, stock_list)
 	portfolio.show()
 	return # Replace with function body.
 
