@@ -1,14 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=31 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="Script" path="res://scripts/BGMusic.gd" id="2_3w3vu"]
-[ext_resource type="Script" path="res://scripts/NewsTicker.gd" id="3_7kh45"]
 [ext_resource type="Script" path="res://scripts/World.gd" id="3_b1veo"]
 [ext_resource type="PackedScene" uid="uid://brbqxqii34i3e" path="res://scenes/NewsPopup.tscn" id="4_vdd20"]
 [ext_resource type="PackedScene" uid="uid://d0mkig123s7oi" path="res://scenes/Menu.tscn" id="6_6860q"]
 [ext_resource type="PackedScene" uid="uid://h2pilxeen8p4" path="res://scenes/PortfolioPanel.tscn" id="7_sbtu7"]
-[ext_resource type="Script" path="res://scripts/PortfolioPanel.gd" id="8_aqa8o"]
-[ext_resource type="Texture2D" uid="uid://dqcvnwqaxe0u6" path="res://assets/news.png" id="8_fpo17"]
 [ext_resource type="AudioStream" uid="uid://qq7547dgq1dj" path="res://assets/sfx/Button press 3.wav" id="10_2gu6w"]
 [ext_resource type="Texture2D" uid="uid://2ce0e3x3cdu4" path="res://assets/Sprite/next.png" id="10_6tmc0"]
 [ext_resource type="Texture2D" uid="uid://yfxm0tvkgy3f" path="res://assets/Sprite/sell.png" id="10_m6nbu"]
@@ -25,6 +22,7 @@
 [ext_resource type="Script" path="res://scripts/BuyButton.gd" id="17_t2vlu"]
 [ext_resource type="Texture2D" uid="uid://bg4wqe8g5730k" path="res://assets/Sprite/Decrease 2.png" id="18_d64oo"]
 [ext_resource type="Script" path="res://scripts/SellButton.gd" id="20_c2s7w"]
+[ext_resource type="PackedScene" uid="uid://duor5lu3htgay" path="res://scenes/NewsTickerLayer.tscn" id="20_q4l58"]
 [ext_resource type="Texture2D" uid="uid://dfj2k4e32185x" path="res://assets/Sprite/stock price.png" id="20_vdvbn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8vjk"]
@@ -54,24 +52,10 @@ offset_bottom = 41.0
 [node name="World" type="Node2D" parent="."]
 script = ExtResource("3_b1veo")
 
-[node name="PopupGroup" type="Node2D" parent="World"]
-
-[node name="NewsPopup" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
-offset_left = 95.0
-offset_top = 82.0
-offset_right = 1819.0
-offset_bottom = 982.0
-
-[node name="PortfolioPanel" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
-offset_left = 175.0
-offset_top = 107.0
-offset_right = 1714.0
-offset_bottom = 943.0
-script = ExtResource("8_aqa8o")
-
 [node name="ButtonGroup" type="Node2D" parent="World"]
 
 [node name="Next" type="TextureButton" parent="World/ButtonGroup"]
+z_index = -1
 offset_left = 1536.0
 offset_top = 663.0
 offset_right = 1842.0
@@ -104,10 +88,14 @@ offset_bottom = 96.0
 theme_override_font_sizes/font_size = 38
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_a8vjk")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_q8ri4")
-item_count = 2
-popup/item_0/text = "AAA"
-popup/item_1/text = "BBB"
+item_count = 4
+popup/item_0/text = "TECH"
+popup/item_1/text = "RENEW ENERGY"
 popup/item_1/id = 1
+popup/item_2/text = "CRYPTO"
+popup/item_2/id = 2
+popup/item_3/text = "REAL ESTATE"
+popup/item_3/id = 3
 
 [node name="Stock Number" type="Label" parent="World/ButtonGroup"]
 offset_left = 1500.0
@@ -169,23 +157,18 @@ offset_bottom = 175.0
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("20_vdvbn")
 
-[node name="NewsTickerLayer" type="CanvasLayer" parent="World"]
-script = ExtResource("3_7kh45")
+[node name="PopupGroup" type="Node2D" parent="World"]
 
-[node name="NewsTickerLabel" type="Label" parent="World/NewsTickerLayer"]
-offset_left = 440.0
-offset_top = 947.0
-offset_right = 1319.0
-offset_bottom = 1005.0
-theme_override_font_sizes/font_size = 40
-text = "This is the news"
+[node name="NewsPopup" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
+offset_left = 95.0
+offset_top = 82.0
+offset_right = 1819.0
+offset_bottom = 982.0
 
-[node name="ReadMore" type="TextureButton" parent="World/NewsTickerLayer"]
-offset_left = 30.0
-offset_top = 827.0
-offset_right = 315.0
-offset_bottom = 1112.0
-texture_normal = ExtResource("8_fpo17")
+[node name="PortfolioPanel" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
+
+[node name="NewsTickerLayer" parent="World" instance=ExtResource("20_q4l58")]
+layer = -1
 
 [node name="Sounds" type="Node2D" parent="World"]
 
@@ -215,4 +198,3 @@ bus = &"News Close"
 [connection signal="pressed" from="World/ButtonGroup/Portfolio" to="." method="_on_portfolio_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Increase" to="." method="_on_increase_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Decrease" to="." method="_on_decrease_pressed"]
-[connection signal="pressed" from="World/NewsTickerLayer/ReadMore" to="World/NewsTickerLayer" method="_on_read_more_pressed"]

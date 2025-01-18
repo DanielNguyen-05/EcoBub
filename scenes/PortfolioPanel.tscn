@@ -1,54 +1,325 @@
-[gd_scene format=3 uid="uid://h2pilxeen8p4"]
+[gd_scene load_steps=10 format=3 uid="uid://h2pilxeen8p4"]
+
+[ext_resource type="Texture2D" uid="uid://br8bs8afjp431" path="res://assets/Sprite/Back 1.png" id="1_1spw0"]
+[ext_resource type="Script" path="res://scripts/PortfolioPanel.gd" id="1_5snhb"]
+[ext_resource type="Texture2D" uid="uid://l4n8gndlk0dx" path="res://assets/Sprite/Avatar.png" id="1_gvp2m"]
+[ext_resource type="Texture2D" uid="uid://bx6gn3vabvo8q" path="res://assets/Sprite/Back 2.png" id="2_8l4k6"]
+[ext_resource type="Texture2D" uid="uid://d2poi6n3asbwt" path="res://assets/Sprite/gold coin.png" id="4_a7n47"]
+[ext_resource type="Texture2D" uid="uid://brkk1fvptyp5x" path="res://assets/Sprite/Shares.png" id="5_b564g"]
+[ext_resource type="Texture2D" uid="uid://d2pldh7vln262" path="res://assets/Sprite/Pile of Money.png" id="6_5qdkk"]
+[ext_resource type="Texture2D" uid="uid://dfj2k4e32185x" path="res://assets/Sprite/stock price.png" id="7_cdekp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0j321"]
+bg_color = Color(0.878431, 0.87451, 0.866667, 1)
 
 [node name="PortfolioPanel" type="Panel"]
-offset_left = 3.0
-offset_top = -5.0
-offset_right = 862.0
-offset_bottom = 379.0
+z_index = 5
+offset_left = 175.0
+offset_top = 107.0
+offset_right = 1714.0
+offset_bottom = 943.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0j321")
+script = ExtResource("1_5snhb")
 
-[node name="ConfirmButton" type="Button" parent="."]
-layout_mode = 2
-offset_left = 732.0
-offset_top = 335.0
-offset_right = 844.0
+[node name="Avatar" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 41.0
+offset_right = 388.0
 offset_bottom = 370.0
-toggle_mode = true
-text = "Confirm"
+texture = ExtResource("1_gvp2m")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-offset_right = 859.0
-offset_bottom = 138.0
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 410.0
+offset_right = 387.0
+offset_bottom = 480.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 62
+text = "Skibidi"
 
-[node name="Cash" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "Cash:"
+[node name="ConfirmButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1286.0
+offset_top = 674.0
+offset_right = 1490.0
+offset_bottom = 878.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("1_1spw0")
+texture_pressed = ExtResource("2_8l4k6")
 
-[node name="NetWorth" type="Label" parent="VBoxContainer"]
+[node name="Cash" type="Label" parent="."]
 layout_mode = 2
-text = "Net Worth: "
+offset_left = 171.0
+offset_top = 527.0
+offset_right = 385.0
+offset_bottom = 579.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 46
+text = "1000$"
 
-[node name="OwnedStocks" type="Label" parent="VBoxContainer"]
+[node name="NetWorth" type="Label" parent="."]
 layout_mode = 2
-text = "Owned Stocks"
+offset_left = 174.0
+offset_top = 686.0
+offset_right = 434.0
+offset_bottom = 738.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 46
+text = "1000$"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
+[node name="Cash Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 504.0
+offset_right = 160.0
+offset_bottom = 598.0
+texture = ExtResource("4_a7n47")
 
-[node name="StockName" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Stock Name"
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 638.0
+offset_right = 216.0
+offset_bottom = 803.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_b564g")
 
-[node name="Shares" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Shares"
+[node name="Stocks Group" type="Panel" parent="."]
+layout_mode = 0
 
-[node name="CurrentPrice" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Current Price"
+[node name="Stock Info" type="Label" parent="Stocks Group"]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 48.0
+offset_right = 1318.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 46
+text = "Stocks Information"
 
-[node name="TotalValue" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
+[node name="Stock Info Sub 1" type="Label" parent="Stocks Group"]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 138.0
+offset_right = 1354.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "Name      Number      Price"
+
+[node name="Stock Info Sub 2" type="Label" parent="Stocks Group"]
+layout_mode = 0
+offset_left = 591.0
+offset_top = 568.0
+offset_right = 1433.0
+offset_bottom = 607.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "---------------------------------"
+
+[node name="Stock Info Sub 3" type="Label" parent="Stocks Group"]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 613.0
+offset_right = 993.0
+offset_bottom = 652.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
 text = "Total Value"
+
+[node name="Total Value" type="Label" parent="Stocks Group"]
+layout_mode = 0
+offset_left = 1264.0
+offset_top = 613.0
+offset_right = 1423.0
+offset_bottom = 652.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+
+[node name="Money Pile" type="TextureRect" parent="Stocks Group"]
+layout_mode = 0
+offset_left = 1158.0
+offset_top = 608.0
+offset_right = 1240.0
+offset_bottom = 663.0
+texture = ExtResource("6_5qdkk")
+
+[node name="TECH" type="Panel" parent="."]
+layout_mode = 0
+
+[node name="Name" type="Label" parent="TECH"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 210.0
+offset_right = 857.0
+offset_bottom = 249.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "TECH"
+horizontal_alignment = 1
+
+[node name="Shares" type="Label" parent="TECH"]
+layout_mode = 0
+offset_left = 936.0
+offset_top = 210.0
+offset_right = 1038.0
+offset_bottom = 249.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "0"
+horizontal_alignment = 1
+
+[node name="Price" type="Label" parent="TECH"]
+layout_mode = 0
+offset_left = 1235.0
+offset_top = 210.0
+offset_right = 1388.0
+offset_bottom = 249.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "102.00"
+
+[node name="TextureRect" type="TextureRect" parent="TECH"]
+layout_mode = 0
+offset_left = 1173.0
+offset_top = 203.0
+offset_right = 1309.0
+offset_bottom = 332.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_cdekp")
+
+[node name="RENEW ENERGY" type="Panel" parent="."]
+layout_mode = 0
+
+[node name="Name" type="Label" parent="RENEW ENERGY"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 310.0
+offset_right = 882.0
+offset_bottom = 349.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "RENEW ENERGY"
+horizontal_alignment = 1
+
+[node name="Shares" type="Label" parent="RENEW ENERGY"]
+layout_mode = 0
+offset_left = 936.0
+offset_top = 310.0
+offset_right = 1038.0
+offset_bottom = 349.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "0"
+horizontal_alignment = 1
+
+[node name="Price" type="Label" parent="RENEW ENERGY"]
+layout_mode = 0
+offset_left = 1235.0
+offset_top = 310.0
+offset_right = 1388.0
+offset_bottom = 349.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "102.00"
+
+[node name="TextureRect" type="TextureRect" parent="RENEW ENERGY"]
+layout_mode = 0
+offset_left = 1173.0
+offset_top = 310.0
+offset_right = 1309.0
+offset_bottom = 439.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_cdekp")
+
+[node name="CRYPTO" type="Panel" parent="."]
+layout_mode = 0
+
+[node name="Name" type="Label" parent="CRYPTO"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 410.0
+offset_right = 857.0
+offset_bottom = 449.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "CRYPTO"
+horizontal_alignment = 1
+
+[node name="Shares" type="Label" parent="CRYPTO"]
+layout_mode = 0
+offset_left = 936.0
+offset_top = 410.0
+offset_right = 1038.0
+offset_bottom = 449.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "0"
+horizontal_alignment = 1
+
+[node name="Price" type="Label" parent="CRYPTO"]
+layout_mode = 0
+offset_left = 1235.0
+offset_top = 410.0
+offset_right = 1388.0
+offset_bottom = 449.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "102.00"
+
+[node name="TextureRect" type="TextureRect" parent="CRYPTO"]
+layout_mode = 0
+offset_left = 1173.0
+offset_top = 410.0
+offset_right = 1309.0
+offset_bottom = 539.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_cdekp")
+
+[node name="REAL ESTATE" type="Panel" parent="."]
+layout_mode = 0
+
+[node name="Name" type="Label" parent="REAL ESTATE"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 510.0
+offset_right = 882.0
+offset_bottom = 549.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "REAL ESTATE"
+horizontal_alignment = 1
+
+[node name="Shares" type="Label" parent="REAL ESTATE"]
+layout_mode = 0
+offset_left = 936.0
+offset_top = 510.0
+offset_right = 1038.0
+offset_bottom = 549.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "0"
+horizontal_alignment = 1
+
+[node name="Price" type="Label" parent="REAL ESTATE"]
+layout_mode = 0
+offset_left = 1235.0
+offset_top = 510.0
+offset_right = 1388.0
+offset_bottom = 549.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "102.00"
+
+[node name="TextureRect" type="TextureRect" parent="REAL ESTATE"]
+layout_mode = 0
+offset_left = 1173.0
+offset_top = 510.0
+offset_right = 1309.0
+offset_bottom = 639.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_cdekp")
 
 [connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]
