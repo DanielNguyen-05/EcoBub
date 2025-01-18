@@ -30,9 +30,6 @@ var panic_meter = 0.0
 var selected_stock = null
 
 func _ready() -> void:	
-	# Spawn stock
-	for stock_data in stock_list:
-		spawn_stock_bubble(stock_data.name, stock_data.current_price, stock_data.growth_rate, stock_data.volatility)
 	# Load news from CSV
 	load_news_from_csv("res://assets/news.csv")
 	# news_ticker.update_news(news_list[current_news_index].title, news_list[current_news_index].content)
@@ -86,7 +83,7 @@ func buy_stock(stockid: int, shares_quantity: int) -> void:
 	portfolio_button.text = str(ceil(cash * 100)/100) + "$"
 	$"World/ButtonGroup/Stock Number".text = str(shares_quantity)
 	
-	sell_popup.update_owned(owned_stocks)
+	sell_button.update_owned(owned_stocks)
 	
 	stock_list[stockid]["growth_rate"] += 0.08
 	stock_list[stockid]["later_price"] += 0.12 * shares_quantity
