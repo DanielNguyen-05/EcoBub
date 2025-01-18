@@ -3,6 +3,8 @@ extends CanvasLayer
 var news = {"title": "title", "content": "content"}
 @onready var news_popup = get_node("../PopupGroup/NewsPopup")
 
+func _ready():
+	hide()
 
 func update_news(title, content):
 	news = {"title": title, "content": content}

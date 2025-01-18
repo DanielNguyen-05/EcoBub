@@ -12,11 +12,12 @@ var news_list = []
 var current_news_index = 0
 
 
-@onready var buy_popup = get_node("../Main/PopupGroup/BuyPopup")
-@onready var sell_popup = get_node("../Main/PopupGroup/SellPopup")
-@onready var stock_info_dropdown = get_node("../Main/ButtonGroup/StockInfoDropdown")
-@onready var news_ticker = get_node("../Main/NewsTickerLayer")
-
+@onready var buy_popup = get_node("../Main/World/PopupGroup/BuyPopup")
+@onready var sell_popup = get_node("../Main/World/PopupGroup/SellPopup")
+@onready var stock_info_dropdown = get_node("../Main/World/ButtonGroup/StockInfoDropdown")
+@onready var news_ticker = get_node("../Main/World/NewsTickerLayer")
+@onready var Menu = get_node("../Main/Menu")
+@onready var World = get_node("../Main/World")
 
 var selected_stock = null
 
@@ -27,10 +28,8 @@ func _ready():
 	# Load news from CSV
 	load_news_from_csv("res://assets/news.csv")
 	news_ticker.update_news(news_list[current_news_index].title, news_list[current_news_index].content)
-
 	print("MarketManager ready!") # Just to confirm it's loaded
-
-
+	
 # --- News Management ---
 func load_news_from_csv(filepath) -> void:
 	var file = FileAccess.open(filepath, FileAccess.READ)
@@ -120,4 +119,10 @@ func _on_sell_popup_sell_confirmed(quantity: Variant) -> void:
 
 func _on_next_pressed() -> void:
 	next_day()
+	pass # Replace with function body.
+
+
+func _on_menu_tree_exited() -> void:
+	news_ticker.show()
+	World.show()
 	pass # Replace with function body.
