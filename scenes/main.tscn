@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=32 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="Script" path="res://scripts/BGMusic.gd" id="2_3w3vu"]
@@ -18,12 +18,25 @@
 [ext_resource type="AudioStream" uid="uid://dedw0hnvww6y" path="res://assets/sfx/Newspaper Open.mp3" id="12_qslfr"]
 [ext_resource type="Texture2D" uid="uid://ckfei36lcu7yi" path="res://assets/Sprite/buydone.png" id="13_pekh2"]
 [ext_resource type="AudioStream" uid="uid://cdxtxs5s1ooa4" path="res://assets/sfx/Newspaper Close.mp3" id="13_q52i6"]
+[ext_resource type="Texture2D" uid="uid://d2poi6n3asbwt" path="res://assets/Sprite/gold coin.png" id="15_3pbmh"]
 [ext_resource type="Texture2D" uid="uid://bx4me5li8ewc6" path="res://assets/Sprite/Increase 1.png" id="15_ikh4o"]
 [ext_resource type="Texture2D" uid="uid://d1cryeb515nsg" path="res://assets/Sprite/Increase 2.png" id="16_at32f"]
 [ext_resource type="Texture2D" uid="uid://chcffb6ycr20r" path="res://assets/Sprite/Decrease 1.png" id="17_kx5hf"]
 [ext_resource type="Script" path="res://scripts/BuyButton.gd" id="17_t2vlu"]
 [ext_resource type="Texture2D" uid="uid://bg4wqe8g5730k" path="res://assets/Sprite/Decrease 2.png" id="18_d64oo"]
 [ext_resource type="Script" path="res://scripts/SellButton.gd" id="20_c2s7w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8vjk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q8ri4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_durkh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oa7kn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_enaef"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_awerg"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_g7qtt")
@@ -32,6 +45,10 @@ script = ExtResource("1_g7qtt")
 script = ExtResource("2_3w3vu")
 
 [node name="Menu" parent="." instance=ExtResource("6_6860q")]
+offset_left = 17.0
+offset_top = 1.0
+offset_right = 57.0
+offset_bottom = 41.0
 
 [node name="World" type="Node2D" parent="."]
 script = ExtResource("3_b1veo")
@@ -79,19 +96,37 @@ texture_pressed = ExtResource("13_pekh2")
 script = ExtResource("17_t2vlu")
 
 [node name="StockInfoDropdown" type="OptionButton" parent="World/ButtonGroup"]
-offset_left = 1772.0
-offset_top = 5.0
-offset_right = 1912.0
-offset_bottom = 47.0
+offset_left = 1500.0
+offset_top = 69.0
+offset_right = 1793.0
+offset_bottom = 121.0
+theme_override_font_sizes/font_size = 46
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_a8vjk")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q8ri4")
 item_count = 2
 popup/item_0/text = "AAA"
 popup/item_1/text = "BBB"
 popup/item_1/id = 1
 
+[node name="Stock Number" type="Label" parent="World/ButtonGroup"]
+offset_left = 1500.0
+offset_top = 132.0
+offset_right = 1681.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 46
+
 [node name="Portfolio" type="Button" parent="World/ButtonGroup"]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 71.0
+offset_top = 45.0
+offset_right = 350.0
+offset_bottom = 147.0
+theme_override_font_sizes/font_size = 46
+theme_override_styles/focus = SubResource("StyleBoxEmpty_durkh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_oa7kn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_enaef")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_awerg")
 text = "1000$"
+icon = ExtResource("15_3pbmh")
 
 [node name="Increase" type="TextureButton" parent="World/ButtonGroup"]
 offset_left = 533.0

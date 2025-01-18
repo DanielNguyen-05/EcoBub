@@ -76,6 +76,7 @@ func buy_stock(stockid: int, shares_quantity: int) -> void:
 		if owned.name == stock_name:
 			owned.shares += shares_quantity
 			portfolio_button.text = str(ceil(cash * 100)/100) + "$"
+			$"World/ButtonGroup/Stock Number".text = str(owned.shares)
 			sell_button.update_owned(owned_stocks)
 			return
 	
@@ -84,6 +85,7 @@ func buy_stock(stockid: int, shares_quantity: int) -> void:
 	owned_stocks.append(new_stock)
 	
 	portfolio_button.text = str(ceil(cash * 100)/100) + "$"
+	$"World/ButtonGroup/Stock Number".text = str(shares_quantity)
 	
 	sell_button.update_owned(owned_stocks)
 	
@@ -97,6 +99,7 @@ func sell_stock(stockid: int, shares_quantity: int) -> void:
 	for owned in owned_stocks:
 		if owned["name"] == stock_name:
 			owned["shares"] -= shares_quantity
+			$"World/ButtonGroup/Stock Number".text = str(owned.shares)
 			if owned["shares"] == 0:
 				owned_stocks.erase(owned)
 				pass
@@ -155,6 +158,15 @@ func _on_next_pressed() -> void:
 
 func _on_stock_info_dropdown_item_selected(index: int) -> void:
 	selected_stock = index
+	var numb = "0"
+	if selected_stock == -1:
+		numb = "-"
+	else:
+		for owned in owned_stocks:
+			if owned.name == stock_list[selected_stock].name:
+				numb = str(owned.shares)
+				break
+	$"World/ButtonGroup/Stock Number".text = numb
 	return # Replace with function body.
 
 
