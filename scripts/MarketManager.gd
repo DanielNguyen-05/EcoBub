@@ -89,7 +89,6 @@ func _process(delta: float) -> void:
 	trigger_market_crash()
 
 func trigger_market_crash():
-	cash = 200000
 	if Input.is_action_just_pressed("ui_right"):
 		get_tree().change_scene_to_file("res://scenes/EndScreen.tscn")
 	pass # Implement later
