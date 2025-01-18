@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccypuu5u760cn"
-path="res://.godot/imported/1.png-cb2af659868eb91ea429c3a4f258fc4b.ctex"
+uid="uid://ceixi3v2770dt"
+path="res://.godot/imported/1.png-84cbceb203baa36d045081089b9f7586.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ball/Breaking/1.png"
-dest_files=["res://.godot/imported/1.png-cb2af659868eb91ea429c3a4f258fc4b.ctex"]
+source_file="res://assets/Ball/Break/1.png"
+dest_files=["res://.godot/imported/1.png-84cbceb203baa36d045081089b9f7586.ctex"]
 
 [params]
 

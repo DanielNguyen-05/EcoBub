@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://urg8rynt8ciw"
-path="res://.godot/imported/1.png-99cd1280c988f68cceddf9597904e948.ctex"
+uid="uid://cxgbyiebhtumc"
+path="res://.godot/imported/2.png-06fc0c49c1b7c923d40966fcf1587d22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ball/Color/1.png"
-dest_files=["res://.godot/imported/1.png-99cd1280c988f68cceddf9597904e948.ctex"]
+source_file="res://assets/Ball/Danger/2.png"
+dest_files=["res://.godot/imported/2.png-06fc0c49c1b7c923d40966fcf1587d22.ctex"]
 
 [params]
 

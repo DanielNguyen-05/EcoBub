@@ -28,13 +28,11 @@ script = ExtResource("1_g7qtt")
 script = ExtResource("2_3w3vu")
 
 [node name="Menu" parent="." instance=ExtResource("6_6860q")]
-visible = false
 
 [node name="World" type="Node2D" parent="."]
 script = ExtResource("3_b1veo")
 
 [node name="PopupGroup" type="Node2D" parent="World"]
-visible = false
 
 [node name="BuyPopup" parent="World/PopupGroup" instance=ExtResource("2_iu3ry")]
 offset_left = 251.0

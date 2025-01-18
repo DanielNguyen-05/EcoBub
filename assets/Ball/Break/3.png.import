@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rpgk30m1q23g"
-path="res://.godot/imported/2.png-19b9c9cd8d3c0549b1af7d68bec20639.ctex"
+uid="uid://h1fyjh6ouu6b"
+path="res://.godot/imported/3.png-a02719982bae494871f0561edcf3f88a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ball/Color/2.png"
-dest_files=["res://.godot/imported/2.png-19b9c9cd8d3c0549b1af7d68bec20639.ctex"]
+source_file="res://assets/Ball/Break/3.png"
+dest_files=["res://.godot/imported/3.png-a02719982bae494871f0561edcf3f88a.ctex"]
 
 [params]
 

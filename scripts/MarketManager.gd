@@ -31,7 +31,7 @@ func _ready() -> void:
 		spawn_stock_bubble(stock_data.name, stock_data.current_price, stock_data.growth_rate, stock_data.volatility)
 	# Load news from CSV
 	load_news_from_csv("res://assets/news.csv")
-	news_ticker.update_news(news_list[current_news_index].title, news_list[current_news_index].content)
+	# news_ticker.update_news(news_list[current_news_index].title, news_list[current_news_index].content)
 	print("MarketManager ready!") # Just to confirm it's loaded
 	return
 	
@@ -130,8 +130,8 @@ func _process(delta: float) -> void:
 	trigger_market_crash()
 
 func trigger_market_crash():
-	if Input.is_action_just_pressed("ui_right"):
-		get_tree().change_scene_to_file("res://scenes/EndScreen.tscn")
+	# if Input.is_action_just_pressed("ui_right"):
+		# get_tree().change_scene_to_file("res://scenes/EndScreen.tscn")
 	pass # Implement later
 
 
