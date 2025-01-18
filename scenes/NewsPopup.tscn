@@ -1,38 +1,65 @@
-[gd_scene load_steps=2 format=3 uid="uid://brbqxqii34i3e"]
+[gd_scene load_steps=5 format=3 uid="uid://brbqxqii34i3e"]
 
 [ext_resource type="Script" path="res://scripts/NewsPopup.gd" id="1_5m01s"]
+[ext_resource type="Texture2D" uid="uid://ivetr1h1nf0r" path="res://assets/close.png" id="2_loy1k"]
+[ext_resource type="Texture2D" uid="uid://bw8nr2hrjby1h" path="res://assets/ads.png" id="3_irjod"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24vqw"]
+bg_color = Color(0.878431, 0.87451, 0.866667, 1)
 
 [node name="NewsPopup" type="Panel"]
 offset_left = 101.0
 offset_top = 90.0
-offset_right = 1128.0
-offset_bottom = 298.0
+offset_right = 1808.0
+offset_bottom = 961.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_24vqw")
 script = ExtResource("1_5m01s")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 332.0
-offset_top = 9.0
-offset_right = 674.0
-offset_bottom = 67.0
-theme_override_colors/font_color = Color(0.870588, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "Báo lá cải đây, mại dô, mại dô"
+offset_left = 627.0
+offset_top = 154.0
+offset_right = 763.0
+offset_bottom = 221.0
+theme_override_colors/font_color = Color(0.0235294, 0.0196078, 0.0117647, 1)
+theme_override_font_sizes/font_size = 48
+text = "TITLE"
 
-[node name="Content" type="RichTextLabel" parent="."]
+[node name="Content" type="Label" parent="."]
 layout_mode = 0
-offset_left = 329.0
-offset_top = 69.0
-offset_right = 657.0
-offset_bottom = 152.0
+offset_left = 125.0
+offset_top = 282.0
+offset_right = 1218.0
+offset_bottom = 644.0
+theme_override_colors/font_color = Color(0.0235294, 0.0196078, 0.0117647, 1)
+theme_override_font_sizes/font_size = 32
 text = "Đây là nội dung của báo lá cải, mọi người xem qua nha. Hehehehehehe"
+autowrap_mode = 3
 
-[node name="Close" type="Button" parent="."]
+[node name="Close" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 426.0
-offset_top = 151.0
-offset_right = 520.0
-offset_bottom = 192.0
-text = "Close"
+offset_left = 1550.0
+offset_top = 68.0
+offset_right = 1618.0
+offset_bottom = 128.0
+texture_normal = ExtResource("2_loy1k")
+
+[node name="News" type="Label" parent="."]
+layout_mode = 0
+offset_left = 563.0
+offset_top = 34.0
+offset_right = 1079.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "BREAKING NEWS"
+
+[node name="Ads" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ads"]
+position = Vector2(1475, 461)
+scale = Vector2(1.083, 1.083)
+texture = ExtResource("3_irjod")
 
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

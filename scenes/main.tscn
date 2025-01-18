@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=9 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="PackedScene" uid="uid://b8ektgpchyvvi" path="res://scenes/BuyPopup.tscn" id="2_iu3ry"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cyxq6luvtgxq8" path="res://scenes/SellPopup.tscn" id="3_dohl7"]
 [ext_resource type="PackedScene" uid="uid://brbqxqii34i3e" path="res://scenes/NewsPopup.tscn" id="4_vdd20"]
 [ext_resource type="PackedScene" uid="uid://d0mkig123s7oi" path="res://scenes/Menu.tscn" id="6_6860q"]
+[ext_resource type="Texture2D" uid="uid://dqcvnwqaxe0u6" path="res://assets/news.png" id="8_fpo17"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_g7qtt")
@@ -63,20 +64,20 @@ popup/item_1/id = 1
 [node name="NewsTickerLayer" type="CanvasLayer" parent="World"]
 script = ExtResource("3_7kh45")
 
-[node name="NewsTickerLabel" type="RichTextLabel" parent="World/NewsTickerLayer"]
-offset_left = 362.0
-offset_top = 968.0
-offset_right = 1130.0
-offset_bottom = 1026.0
-theme_override_font_sizes/normal_font_size = 20
+[node name="NewsTickerLabel" type="Label" parent="World/NewsTickerLayer"]
+offset_left = 440.0
+offset_top = 947.0
+offset_right = 1319.0
+offset_bottom = 1005.0
+theme_override_font_sizes/font_size = 40
 text = "This is the news"
 
-[node name="ReadMore" type="Button" parent="World/NewsTickerLayer"]
-offset_left = 1025.0
-offset_top = 964.0
-offset_right = 1168.0
-offset_bottom = 1014.0
-text = "Read More"
+[node name="ReadMore" type="TextureButton" parent="World/NewsTickerLayer"]
+offset_left = 30.0
+offset_top = 827.0
+offset_right = 315.0
+offset_bottom = 1112.0
+texture_normal = ExtResource("8_fpo17")
 
 [connection signal="tree_exited" from="Menu" to="." method="_on_menu_tree_exited"]
 [connection signal="sell_confirmed" from="World/PopupGroup/SellPopup" to="." method="_on_sell_popup_sell_confirmed"]
