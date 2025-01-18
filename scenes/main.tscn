@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="PackedScene" uid="uid://b8ektgpchyvvi" path="res://scenes/BuyPopup.tscn" id="2_iu3ry"]
-[ext_resource type="Script" path="res://scenes/NewsTicker.gd" id="3_7kh45"]
+[ext_resource type="Script" path="res://scripts/NewsTicker.gd" id="3_7kh45"]
 [ext_resource type="PackedScene" uid="uid://brbqxqii34i3e" path="res://scenes/NewsPopup.tscn" id="4_vdd20"]
 
 [node name="Main" type="Node2D"]

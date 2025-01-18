@@ -56,7 +56,6 @@ func _on_stock_info_dropdown_item_selected(index: int) -> void:
 
 
 func _on_buy_popup_buy_confirmed(quantity: Variant) -> void:
-	print(selected_stock, quantity)
 	if selected_stock != null:
 		buy_stock(selected_stock, quantity)
 	pass # Replace with function body.
