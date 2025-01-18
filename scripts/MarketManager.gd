@@ -115,6 +115,7 @@ func next_day() -> void:
 	if current_day - 1 >= 0:
 		affect_later_stock_price(news_list[(current_day - 1) % news_list.size()].stock, news_list[(current_day - 1) % news_list.size()].impact)
 	current_day += 1
+	news_ticker.update_news(news_list[current_day].title, news_list[current_day].content)
 	update_stock_prices()
 
 	pass
