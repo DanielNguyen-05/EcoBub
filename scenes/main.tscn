@@ -12,6 +12,7 @@ script = ExtResource("1_g7qtt")
 [node name="PopupGroup" type="Node2D" parent="."]
 
 [node name="BuyPopup" parent="PopupGroup" instance=ExtResource("2_iu3ry")]
+anchors_preset = 0
 offset_right = 0.0
 offset_bottom = 0.0
 

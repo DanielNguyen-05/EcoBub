@@ -1,40 +1,85 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxithw5yb6gjn"]
+[gd_scene load_steps=9 format=3 uid="uid://d0mkig123s7oi"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_yut8i"]
+[ext_resource type="Texture2D" uid="uid://bo5pmoypoaigo" path="res://assets/Ec Bub.png" id="2_avviv"]
+[ext_resource type="Script" path="res://scripts/Ball.gd" id="2_bx0v6"]
+[ext_resource type="Texture2D" uid="uid://c22hvlxae1phk" path="res://assets/Frame.png" id="3_7xfh1"]
+[ext_resource type="Texture2D" uid="uid://bb52g6fr767mf" path="res://assets/Press.png" id="4_3xxbu"]
 
-[node name="Menu" type="Control"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_wqhjf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7xfh1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_61le6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3xxbu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8hqoc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_avviv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_yut8i")
 
-[node name="StartGame" type="Button" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 484.0
-offset_top = 141.0
-offset_right = 1385.0
-offset_bottom = 438.0
+anchors_preset = -1
+anchor_right = 48.0
+anchor_bottom = 27.0
+offset_right = -0.00012207
+offset_bottom = -0.00012207
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "START GAME "
+color = Color(0.0941176, 0.0784314, 0.145098, 1)
 
-[node name="QuitGame" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 485.0
-offset_top = 601.0
-offset_right = 1386.0
-offset_bottom = 898.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "QUIT GAME"
+[node name="Ball" type="CharacterBody2D" parent="."]
+script = ExtResource("2_bx0v6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ball"]
+z_index = 3
+position = Vector2(842.25, 92.75)
+scale = Vector2(1.37216, 1.33807)
+sprite_frames = SubResource("SpriteFrames_wqhjf")
+animation = &"idle"
+
+[node name="Press" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Press"]
+position = Vector2(718, 724)
+scale = Vector2(1.67737, 1.43952)
+sprite_frames = SubResource("SpriteFrames_61le6")
+animation = &"idle"
+
+[node name="Title" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Title"]
+z_index = 1
+position = Vector2(973, 483)
+scale = Vector2(1.5641, 1.46571)
+sprite_frames = SubResource("SpriteFrames_8hqoc")
+animation = &"idle"

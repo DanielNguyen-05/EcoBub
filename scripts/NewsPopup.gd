@@ -10,7 +10,6 @@ func set_news_data(title, content):
 	ntitle.text = title
 	ncontent.text = content
 
-
 func _on_close_pressed() -> void:
 	hide()
 	pass # Replace with function body.
