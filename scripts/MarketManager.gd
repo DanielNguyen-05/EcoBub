@@ -101,7 +101,7 @@ func buy_stock(stockid: int, shares_quantity: int) -> void:
 	for owned in owned_stocks:
 		if owned.name == stock_name:
 			owned.shares += shares_quantity
-			portfolio_button.text = str(ceil(cash * 100)/100) + "$"
+			portfolio_button.text = str((cash * 100)/100) + "$"
 			$"World/ButtonGroup/Stock Number".text = str(owned.shares)
 			sell_button.update_owned(owned_stocks)
 			return
@@ -110,7 +110,7 @@ func buy_stock(stockid: int, shares_quantity: int) -> void:
 	var new_stock = {"name": stock_name, "shares": shares_quantity}
 	owned_stocks.append(new_stock)
 	
-	portfolio_button.text = str(ceil(cash * 100)/100) + "$"
+	portfolio_button.text = str((cash * 100)/100) + "$"
 	$"World/ButtonGroup/Stock Number".text = str(shares_quantity)
 	
 	sell_button.update_owned(owned_stocks)
@@ -136,7 +136,7 @@ func sell_stock(stockid: int, shares_quantity: int):
 				owned_stocks.erase(owned)
 				pass
 	
-	portfolio_button.text = str(ceil(cash * 100)/100) + "$"
+	portfolio_button.text = str((cash * 100)/100) + "$"
 	return # Implement later
 
 # --- Other Game Logic ---
@@ -156,10 +156,10 @@ func get_owned_stocks():
 
 func affect_later_stock_price(stockID, impact):
 	# TODO: Implement this function to affect the stock price more realistically
-	stock_list[stockID-1]["later_price"] += impact * stock_list[stockID]["growth_rate"]
+	stock_list[stockID-1]["later_price"] += impact * stock_list[stockID-1]["growth_rate"]
+	stock_list[stockID-1]["volatility"] = round(stock_list[stockID-1]["volatility"] * 100) / 100
 	if impact > 2:
 		stock_list[stockID]["volatility"] += 0.2
-
 	pass
 
 func update_stock_prices():
@@ -168,6 +168,8 @@ func update_stock_prices():
 		stock.current_price += RandomNumberGenerator.new().randf_range(-stock.volatility, stock.volatility)
 		panic_meter += stock.volatility
 		stock.later_price = stock.current_price + stock.growth_rate * RandomNumberGenerator.new().randf_range(-stock.volatility, stock.volatility)
+		stock.current_price = round(stock.current_price * 100) / 100
+		stock.later_price = round(stock.later_price * 100) / 100
 	if panic_meter > 50:
 		trigger_market_crash()
 	pass
@@ -207,7 +209,7 @@ func _on_next_pressed() -> void:
 func _on_stock_info_dropdown_item_selected(index: int) -> void:
 	selected_stock = index
 	var numb = "0"
-	var price = str(ceil(stock_list[selected_stock]["current_price"] * 100)/100)
+	var price = str((stock_list[selected_stock]["current_price"] * 100)/100)
 	
 	if selected_stock == -1:
 		numb = "-"
