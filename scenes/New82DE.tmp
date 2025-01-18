@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://brbqxqii34i3e"]
+
+[ext_resource type="Script" path="res://scripts/NewsPopup.gd" id="1_5m01s"]
+
+[node name="NewsPopup" type="Panel"]
+offset_left = 101.0
+offset_top = 90.0
+offset_right = 1128.0
+offset_bottom = 298.0
+script = ExtResource("1_5m01s")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 9.0
+offset_right = 674.0
+offset_bottom = 67.0
+theme_override_colors/font_color = Color(0.870588, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Báo lá cải đây, mại dô, mại dô"
+
+[node name="Content" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 329.0
+offset_top = 69.0
+offset_right = 657.0
+offset_bottom = 152.0
+text = "Đây là nội dung của báo lá cải, mọi người xem qua nha. Hehehehehehe"
+
+[node name="Close" type="Button" parent="."]
+layout_mode = 0
+offset_left = 426.0
+offset_top = 151.0
+offset_right = 520.0
+offset_bottom = 192.0
+text = "Close"
+
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

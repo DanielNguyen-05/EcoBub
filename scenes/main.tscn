@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnht67upk063y"]
+
+[ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
+[ext_resource type="PackedScene" uid="uid://b8ektgpchyvvi" path="res://scenes/BuyPopup.tscn" id="2_iu3ry"]
+[ext_resource type="Script" path="res://scripts/NewsTicker.gd" id="3_7kh45"]
+[ext_resource type="PackedScene" uid="uid://brbqxqii34i3e" path="res://scenes/NewsPopup.tscn" id="4_vdd20"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_g7qtt")
+
+[node name="BuyPopup" parent="." instance=ExtResource("2_iu3ry")]
+
+[node name="ButtonGroup" type="Node2D" parent="."]
+
+[node name="Next" type="Button" parent="ButtonGroup"]
+offset_left = 782.0
+offset_top = 717.0
+offset_right = 948.0
+offset_bottom = 853.0
+text = "Next Day"
+
+[node name="Sell" type="Button" parent="ButtonGroup"]
+offset_left = 1230.0
+offset_top = 728.0
+offset_right = 1405.0
+offset_bottom = 860.0
+text = "Sell"
+
+[node name="Buy" type="Button" parent="ButtonGroup"]
+offset_left = 331.0
+offset_top = 712.0
+offset_right = 554.0
+offset_bottom = 877.0
+text = "Buy"
+
+[node name="StockInfoDropdown" type="OptionButton" parent="ButtonGroup"]
+offset_left = 1772.0
+offset_top = 5.0
+offset_right = 1912.0
+offset_bottom = 47.0
+item_count = 2
+popup/item_0/text = "AAA"
+popup/item_1/text = "BBB"
+popup/item_1/id = 1
+
+[node name="NewsTickerLayer" type="CanvasLayer" parent="."]
+script = ExtResource("3_7kh45")
+
+[node name="NewsTickerLabel" type="RichTextLabel" parent="NewsTickerLayer"]
+offset_left = 362.0
+offset_top = 968.0
+offset_right = 1130.0
+offset_bottom = 1026.0
+theme_override_font_sizes/normal_font_size = 20
+text = "This is the news"
+
+[node name="ReadMore" type="Button" parent="NewsTickerLayer"]
+offset_left = 1025.0
+offset_top = 964.0
+offset_right = 1168.0
+offset_bottom = 1014.0
+text = "Read More"
+
+[node name="NewsPopup" parent="." instance=ExtResource("4_vdd20")]
+
+[connection signal="buy_confirmed" from="BuyPopup" to="." method="_on_buy_popup_buy_confirmed"]
+[connection signal="pressed" from="ButtonGroup/Sell" to="." method="_on_sell_pressed"]
+[connection signal="pressed" from="ButtonGroup/Buy" to="." method="_on_buy_pressed"]
+[connection signal="item_selected" from="ButtonGroup/StockInfoDropdown" to="." method="_on_stock_info_dropdown_item_selected"]
+[connection signal="pressed" from="NewsTickerLayer/ReadMore" to="NewsTickerLayer" method="_on_read_more_pressed"]

@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 config/name="Bubble"
-run/main_scene="res://scenes/Menu.tscn"
+run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+
+[autoload]
+
+MarketManager="*res://scripts/MarketManager.gd"
 
 [display]
 
@@ -26,6 +29,7 @@ project/assembly_name="Bubble"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/size/viewport_height=648
 textures/size/viewport_width=1152
