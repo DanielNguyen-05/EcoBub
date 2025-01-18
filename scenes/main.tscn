@@ -1,14 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=6 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="PackedScene" uid="uid://b8ektgpchyvvi" path="res://scenes/BuyPopup.tscn" id="2_iu3ry"]
 [ext_resource type="Script" path="res://scripts/NewsTicker.gd" id="3_7kh45"]
+[ext_resource type="PackedScene" uid="uid://cyxq6luvtgxq8" path="res://scenes/SellPopup.tscn" id="3_dohl7"]
 [ext_resource type="PackedScene" uid="uid://brbqxqii34i3e" path="res://scenes/NewsPopup.tscn" id="4_vdd20"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_g7qtt")
 
-[node name="BuyPopup" parent="." instance=ExtResource("2_iu3ry")]
+[node name="PopupGroup" type="Node2D" parent="."]
+
+[node name="BuyPopup" parent="PopupGroup" instance=ExtResource("2_iu3ry")]
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="SellPopup" parent="PopupGroup" instance=ExtResource("3_dohl7")]
+
+[node name="NewsPopup" parent="PopupGroup" instance=ExtResource("4_vdd20")]
 
 [node name="ButtonGroup" type="Node2D" parent="."]
 
@@ -61,9 +70,8 @@ offset_right = 1168.0
 offset_bottom = 1014.0
 text = "Read More"
 
-[node name="NewsPopup" parent="." instance=ExtResource("4_vdd20")]
-
-[connection signal="buy_confirmed" from="BuyPopup" to="." method="_on_buy_popup_buy_confirmed"]
+[connection signal="buy_confirmed" from="PopupGroup/BuyPopup" to="." method="_on_buy_popup_buy_confirmed"]
+[connection signal="sell_confirmed" from="PopupGroup/SellPopup" to="." method="_on_sell_popup_sell_confirmed"]
 [connection signal="pressed" from="ButtonGroup/Sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="ButtonGroup/Buy" to="." method="_on_buy_pressed"]
 [connection signal="item_selected" from="ButtonGroup/StockInfoDropdown" to="." method="_on_stock_info_dropdown_item_selected"]

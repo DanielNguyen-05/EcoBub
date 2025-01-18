@@ -8,8 +8,9 @@ var stock_list = [
 	{"name": "BBB", "initial_price": 25.0, "growth_rate": 0.1, "volatility": 0.2},
 ]
 
-@onready var buy_popup = get_node("BuyPopup")
-@onready var stock_info_dropdown = get_node("ButtonGroup/StockInfoDropdown")
+@onready var buy_popup = get_node("../Main/PopupGroup/BuyPopup")
+@onready var sell_popup = get_node("../Main/PopupGroup/SellPopup")
+@onready var stock_info_dropdown = get_node("../Main/ButtonGroup/StockInfoDropdown")
 
 
 var selected_stock = null
@@ -46,6 +47,7 @@ func _on_buy_pressed() -> void:
 
 
 func _on_sell_pressed() -> void:
+	sell_popup.show()
 	print("Sell pressed")
 	pass # Replace with function body.
 
@@ -58,4 +60,9 @@ func _on_stock_info_dropdown_item_selected(index: int) -> void:
 func _on_buy_popup_buy_confirmed(quantity: Variant) -> void:
 	if selected_stock != null:
 		buy_stock(selected_stock, quantity)
+	pass # Replace with function body.
+
+func _on_sell_popup_sell_confirmed(quantity: Variant) -> void:
+	if selected_stock != null:
+		sell_stock(selected_stock, quantity)
 	pass # Replace with function body.
