@@ -13,7 +13,11 @@ var stock_list = [
 
 var owned_stocks = []
 
-var news_list = []
+var news_list0 = []
+var news_list1 = []
+var news_list2 = []
+var news_list3 = []
+
 var current_day = 0
 
 var game_duration = 180.0
@@ -31,15 +35,30 @@ var panic_meter = 0.0
 
 var selected_stock = null
 
+var selected_story = 0
+
+func getnews(listid, day):
+	if listid == 0:
+		return news_list0[day]
+	elif listid == 1:
+		return news_list1[day]
+	elif listid == 2:
+		return news_list2[day]
+	elif listid == 3:
+		return news_list3[day]
+
 func _ready() -> void:	
 	# Load news from CSV
-	load_news_from_csv("res://assets/news1.csv")
-	news_ticker.update_news(news_list[current_day].title, news_list[current_day].content)
+	load_news_from_csv("res://assets/news1.csv", 0)
+	load_news_from_csv("res://assets/news2.csv", 1)
+	load_news_from_csv("res://assets/news3.csv", 2)
+	load_news_from_csv("res://assets/news4.csv", 3)
+	news_ticker.update_news(getnews(selected_story, current_day).title, getnews(selected_story, current_day).content)
 	print("MarketManager ready!") # Just to confirm it's loaded
 	return
 	
 # --- News Management ---
-func load_news_from_csv(filepath) -> void:
+func load_news_from_csv(filepath, id) -> void:
 	var file = FileAccess.open(filepath, FileAccess.READ)
 	if file == null:
 		push_error("Failed to open file: ", filepath)
@@ -51,14 +70,23 @@ func load_news_from_csv(filepath) -> void:
 	while not file.eof_reached():
 		var line = file.get_csv_line()
 		if line.size() >= 2:
-			add_news(line[0], line[1], int(line[2]), float(line[3])) # Add news to news_data array
+			add_news(id, line[0], line[1], int(line[2]), float(line[3])) # Add news to news_data array
 		else:
 			push_warning("Invalid line format in CSV: ", line)
 	file.close()
 
-func add_news(title, content, stock, impact) -> void:
+func add_news(id, title, content, stock, impact) -> void:
 	var news_item = {"title": title, "content": content, "stock": stock, "impact": impact}
-	news_list.append(news_item)
+	if id == 0:
+		news_list0.append(news_item)
+	elif id == 1:
+		news_list1.append(news_item)
+	elif id == 2:
+		news_list2.append(news_item)
+	elif id == 3:
+		news_list3.append(news_item)
+	else:
+		push_error("Invalid news ID: ", id)
 	pass
 
 
@@ -114,10 +142,11 @@ func sell_stock(stockid: int, shares_quantity: int):
 # --- Other Game Logic ---
 func next_day() -> void:
 	#draw graph(current price, later price)
+	selected_story = RandomNumberGenerator.new().randi_range(0, 3)
 	if current_day - 1 >= 0:
-		affect_later_stock_price(news_list[(current_day - 1) % news_list.size()].stock, news_list[(current_day - 1) % news_list.size()].impact)
+		affect_later_stock_price(getnews(selected_story, current_day - 1).stock, getnews(selected_story, current_day - 1).impact)
 	current_day += 1
-	news_ticker.update_news(news_list[current_day].title, news_list[current_day].content)
+	news_ticker.update_news(getnews(selected_story, current_day).title, getnews(selected_story, current_day - 1).content)
 	update_stock_prices()
 
 	pass
@@ -127,7 +156,7 @@ func get_owned_stocks():
 
 func affect_later_stock_price(stockID, impact):
 	# TODO: Implement this function to affect the stock price more realistically
-	stock_list[stockID]["later_price"] += impact * stock_list[stockID]["growth_rate"]
+	stock_list[stockID-1]["later_price"] += impact * stock_list[stockID]["growth_rate"]
 	if impact > 2:
 		stock_list[stockID]["volatility"] += 0.2
 
