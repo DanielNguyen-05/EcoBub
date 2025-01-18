@@ -2,19 +2,22 @@ extends Node2D
 
 # You can use this to access the singleton instance, for example: MarketManager.cash
 var cash = 1000.0
+var networth = 0
 var count = 0
 
 var stock_list = [
-	{"name": "TECH", "current_price": 75.0, "growth_rate": 0.2, "volatility": 0.5, "later_price": 51.0},
+	{"name": "TECH", "current_price": 75.0, "growth_rate": 0.2, "volatility": 0.5, "later_price": 75.0},
 	{"name": "RENEW ENERGY", "current_price": 51.0, "growth_rate": 0.1, "volatility": 0.2, "later_price": 51.0},
-	{"name": "CRYPTO", "current_price": 60.0, "growth_rate": 0.3, "volatility": 0.5, "later_price": 51.0},
-	{"name": "REAL ESTATE", "current_price": 92.0, "growth_rate": 0.9, "volatility": 0.5, "later_price": 51.0},
+	{"name": "CRYPTO", "current_price": 60.0, "growth_rate": 0.3, "volatility": 0.5, "later_price": 60.0},
+	{"name": "REAL ESTATE", "current_price": 92.0, "growth_rate": 0.9, "volatility": 0.5, "later_price": 92.0},
 ]
 
 var owned_stocks = []
 
 var news_list = []
 var current_day = 0
+
+signal networth_update(net)
 
 var game_duration = 180.0
 var game_over = false
@@ -139,8 +142,22 @@ func update_stock_prices():
 		stock.current_price += RandomNumberGenerator.new().randf_range(-stock.volatility, stock.volatility)
 		panic_meter += stock.volatility
 		stock.later_price = stock.current_price + stock.growth_rate * RandomNumberGenerator.new().randf_range(-stock.volatility, stock.volatility)
+	
+	var id = $World/ButtonGroup/StockInfoDropdown.get_selected_id()
+	
+	match id:
+		0:
+			$"World/ButtonGroup/Stock Price".text = str(ceil(stock_list[0].current_price * 100)/100)
+		1:
+			$"World/ButtonGroup/Stock Price".text = str(ceil(stock_list[1].current_price * 100)/100)
+		2:
+			$"World/ButtonGroup/Stock Price".text = str(ceil(stock_list[2].current_price * 100)/100)
+		3:
+			$"World/ButtonGroup/Stock Price".text = str(ceil(stock_list[3].current_price * 100)/100)
+		
 	if panic_meter > 10:
 		trigger_market_crash()
+	
 	pass
 
 func _process(delta: float) -> void:
@@ -152,7 +169,19 @@ func _process(delta: float) -> void:
 
 func trigger_market_crash():
 	# TODO: Play crash effect
-	get_tree().change_scene_to_file("res://scenes/EndScreen.tscn")
+	var price
+	for stock_name in owned_stocks:
+		var shares = stock_name.shares
+		
+		for market_stocks in stock_list:
+			if market_stocks["name"] == stock_name.name:
+				price = market_stocks["current_price"]
+				break
+		
+		var value = shares * price
+		networth += value
+	networth += cash
+	emit_signal("networth_update", networth)
 	pass # Implement later
 
 
@@ -224,5 +253,7 @@ func _on_increase_pressed() -> void:
 
 func _on_decrease_pressed() -> void:
 	count -= 1
+	if count < 0:
+		count = 0
 	$World/ButtonGroup/Number.text = str(count)
 	pass # Replace with function body.
