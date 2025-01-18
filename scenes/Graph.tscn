@@ -1,8 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://8cchwbg58eab"]
+[gd_scene load_steps=5 format=3 uid="uid://8cchwbg58eab"]
 
 [ext_resource type="Script" path="res://scripts/Graph.gd" id="1_3ngjj"]
+[ext_resource type="Texture2D" uid="uid://driq5r2kh2bqx" path="res://assets/Ball/Color/0.png" id="2_usiig"]
+[ext_resource type="Texture2D" uid="uid://urg8rynt8ciw" path="res://assets/Ball/Color/1.png" id="3_b8xsl"]
 
-[node name="Scene1" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_khhgi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_usiig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b8xsl")
+}],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[node name="Graph" type="Node2D"]
 script = ExtResource("1_3ngjj")
 
 [node name="Button" type="Button" parent="."]
@@ -12,5 +28,12 @@ offset_right = 1773.0
 offset_bottom = 955.0
 theme_override_font_sizes/font_size = 80
 text = "Next"
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ball"]
+position = Vector2(1583, 473)
+sprite_frames = SubResource("SpriteFrames_khhgi")
+animation = &"Normal"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
