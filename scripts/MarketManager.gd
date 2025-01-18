@@ -8,9 +8,15 @@ var stock_list = [
 	{"name": "BBB", "initial_price": 25.0, "growth_rate": 0.1, "volatility": 0.2},
 ]
 
+var owned_stocks = {
+	"AAA": {"shares": 10, "price": 12.5},
+	"BBB": {"shares": 5, "price": 27.0}
+}
+
 @onready var buy_popup = get_node("BuyPopup")
 @onready var sell_popup = get_node("SellPopup")
 @onready var stock_info_dropdown = get_node("ButtonGroup/StockInfoDropdown")
+@onready var portfolio = get_node("PortfolioPanel")
 
 var selected_stock = null
 
@@ -69,4 +75,10 @@ func _on_stock_info_dropdown_item_selected(index: int) -> void:
 func _on_buy_popup_buy_confirmed(quantity: Variant) -> void:
 	if selected_stock != null:
 		buy_stock(selected_stock, quantity)
+	pass # Replace with function body.
+
+
+func _on_portfolio_pressed() -> void:
+	portfolio.update_portfolio(cash, owned_stocks)
+	portfolio.show()
 	pass # Replace with function body.

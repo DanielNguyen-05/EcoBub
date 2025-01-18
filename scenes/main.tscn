@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=16 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="PackedScene" uid="uid://b8ektgpchyvvi" path="res://scenes/BuyPopup.tscn" id="2_iu3ry"]
@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://b31usg7j8hiog" path="res://scenes/click_button.tscn" id="3_flcfr"]
 [ext_resource type="Script" path="res://scripts/NewsTicker.gd" id="4_qyicq"]
 [ext_resource type="PackedScene" uid="uid://brbqxqii34i3e" path="res://scenes/NewsPopup.tscn" id="4_vdd20"]
-[ext_resource type="Script" path="res://scripts/bg_music.gd" id="7_1nra2"]
+[ext_resource type="Script" path="res://scripts/BGMusic.gd" id="7_1nra2"]
+[ext_resource type="PackedScene" uid="uid://h2pilxeen8p4" path="res://scenes/PortfolioPanel.tscn" id="7_2y06r"]
 [ext_resource type="PackedScene" uid="uid://bn80nsqirvcw0" path="res://scenes/events_music.tscn" id="8_ojl3h"]
-[ext_resource type="Script" path="res://scripts/events_music.gd" id="9_v8ggc"]
+[ext_resource type="Script" path="res://scripts/portfolio_panel.gd" id="9_oxp52"]
+[ext_resource type="Script" path="res://scripts/EventMusic.gd" id="9_v8ggc"]
 [ext_resource type="AudioStream" uid="uid://ch4frhk1uci63" path="res://assets/sfx/Button Can't be Pressed.wav" id="10_krrni"]
 [ext_resource type="AudioStream" uid="uid://dedw0hnvww6y" path="res://assets/sfx/Newspaper Open.mp3" id="12_8gdnh"]
 [ext_resource type="AudioStream" uid="uid://cdxtxs5s1ooa4" path="res://assets/sfx/Newspaper Close.mp3" id="13_ah6mi"]
@@ -62,6 +64,13 @@ popup/item_0/text = "AAA"
 popup/item_1/text = "BBB"
 popup/item_1/id = 1
 
+[node name="Portfolio" type="Button" parent="ButtonGroup"]
+offset_left = 35.0
+offset_top = 32.0
+offset_right = 277.0
+offset_bottom = 90.0
+text = "1000$"
+
 [node name="NewsTickerLayer" parent="." instance=ExtResource("3_7vwx8")]
 script = ExtResource("4_qyicq")
 
@@ -70,6 +79,13 @@ offset_left = 424.0
 offset_top = 325.0
 offset_right = 1451.0
 offset_bottom = 533.0
+
+[node name="PortfolioPanel" parent="." instance=ExtResource("7_2y06r")]
+offset_left = 155.0
+offset_top = 91.0
+offset_right = 1757.0
+offset_bottom = 1002.0
+script = ExtResource("9_oxp52")
 
 [node name="Sounds" type="Node2D" parent="."]
 
@@ -99,3 +115,4 @@ bus = &"News Close"
 [connection signal="pressed" from="ButtonGroup/Sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="ButtonGroup/Buy" to="." method="_on_buy_pressed"]
 [connection signal="item_selected" from="ButtonGroup/StockInfoDropdown" to="." method="_on_stock_info_dropdown_item_selected"]
+[connection signal="pressed" from="ButtonGroup/Portfolio" to="." method="_on_portfolio_pressed"]
