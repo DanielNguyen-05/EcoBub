@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://blt5ohrvonvk5"
+path="res://.godot/imported/Macro Event 2.ogg-afb0817e46dd933555bf8ae554227ef5.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/macro event/Macro Event 2.ogg"
+dest_files=["res://.godot/imported/Macro Event 2.ogg-afb0817e46dd933555bf8ae554227ef5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

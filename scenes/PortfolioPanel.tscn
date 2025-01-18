@@ -1,18 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://h2pilxeen8p4"]
+[gd_scene format=3 uid="uid://h2pilxeen8p4"]
 
-[ext_resource type="Script" path="res://scripts/PortfolioPanel.gd" id="1_sbh3l"]
-
-[node name="PortfolioPanel" type="PanelContainer"]
+[node name="PortfolioPanel" type="Panel"]
 offset_left = 3.0
 offset_top = -5.0
 offset_right = 862.0
 offset_bottom = 379.0
-script = ExtResource("1_sbh3l")
+
+[node name="ConfirmButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 732.0
+offset_top = 335.0
+offset_right = 844.0
+offset_bottom = 370.0
+toggle_mode = true
+text = "Confirm"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+offset_right = 859.0
+offset_bottom = 138.0
 
-[node name="CashValueLabel" type="Label" parent="VBoxContainer"]
+[node name="Cash" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Cash:"
 
@@ -42,3 +50,5 @@ text = "Current Price"
 [node name="TotalValue" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Total Value"
+
+[connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]

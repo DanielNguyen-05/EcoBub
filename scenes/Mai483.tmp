@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://dnht67upk063y"]
+
+[ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
+[ext_resource type="PackedScene" uid="uid://b8ektgpchyvvi" path="res://scenes/BuyPopup.tscn" id="2_iu3ry"]
+[ext_resource type="PackedScene" uid="uid://duor5lu3htgay" path="res://scenes/news_ticker_layer.tscn" id="3_7vwx8"]
+[ext_resource type="PackedScene" uid="uid://b31usg7j8hiog" path="res://scenes/click_button.tscn" id="3_flcfr"]
+[ext_resource type="Script" path="res://scripts/NewsTicker.gd" id="4_qyicq"]
+[ext_resource type="PackedScene" uid="uid://brbqxqii34i3e" path="res://scenes/NewsPopup.tscn" id="4_vdd20"]
+[ext_resource type="Script" path="res://scripts/bg_music.gd" id="7_1nra2"]
+[ext_resource type="PackedScene" uid="uid://bn80nsqirvcw0" path="res://scenes/events_music.tscn" id="8_ojl3h"]
+[ext_resource type="Script" path="res://scripts/events_music.gd" id="9_v8ggc"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_g7qtt")
+
+[node name="BuyPopup" parent="." instance=ExtResource("2_iu3ry")]
+
+[node name="ButtonGroup" type="Node2D" parent="."]
+
+[node name="Next" type="Button" parent="ButtonGroup"]
+offset_left = 782.0
+offset_top = 717.0
+offset_right = 948.0
+offset_bottom = 853.0
+text = "Next Day"
+
+[node name="Sell" type="Button" parent="ButtonGroup"]
+offset_left = 1230.0
+offset_top = 728.0
+offset_right = 1405.0
+offset_bottom = 860.0
+text = "Sell"
+
+[node name="Buy" type="Button" parent="ButtonGroup"]
+offset_left = 331.0
+offset_top = 712.0
+offset_right = 554.0
+offset_bottom = 877.0
+text = "Buy"
+
+[node name="StockInfoDropdown" type="OptionButton" parent="ButtonGroup"]
+offset_left = 1772.0
+offset_top = 5.0
+offset_right = 1912.0
+offset_bottom = 47.0
+item_count = 2
+popup/item_0/text = "AAA"
+popup/item_1/text = "BBB"
+popup/item_1/id = 1
+
+[node name="NewsTickerLayer" parent="." instance=ExtResource("3_7vwx8")]
+script = ExtResource("4_qyicq")
+
+[node name="NewsPopup" parent="." instance=ExtResource("4_vdd20")]
+offset_left = 424.0
+offset_top = 325.0
+offset_right = 1451.0
+offset_bottom = 533.0
+
+[node name="Click Button" parent="." instance=ExtResource("3_flcfr")]
+
+[node name="BG Music" type="AudioStreamPlayer2D" parent="."]
+bus = &"BG"
+script = ExtResource("7_1nra2")
+
+[node name="Events Music" parent="." instance=ExtResource("8_ojl3h")]
+script = ExtResource("9_v8ggc")
+
+[connection signal="buy_confirmed" from="BuyPopup" to="." method="_on_buy_popup_buy_confirmed"]
+[connection signal="pressed" from="ButtonGroup/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="ButtonGroup/Sell" to="." method="_on_sell_pressed"]
+[connection signal="pressed" from="ButtonGroup/Buy" to="." method="_on_buy_pressed"]
+[connection signal="item_selected" from="ButtonGroup/StockInfoDropdown" to="." method="_on_stock_info_dropdown_item_selected"]

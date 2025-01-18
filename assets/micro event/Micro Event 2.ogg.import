@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d38umykh6fg3x"
+path="res://.godot/imported/Micro Event 2.ogg-ff1c07aee153ad1d14e996ce2059690e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/micro event/Micro Event 2.ogg"
+dest_files=["res://.godot/imported/Micro Event 2.ogg-ff1c07aee153ad1d14e996ce2059690e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

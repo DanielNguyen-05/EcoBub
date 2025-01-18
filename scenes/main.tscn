@@ -1,16 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=16 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
+[ext_resource type="Script" path="res://scripts/BGMusic.gd" id="2_3w3vu"]
 [ext_resource type="PackedScene" uid="uid://b8ektgpchyvvi" path="res://scenes/BuyPopup.tscn" id="2_iu3ry"]
 [ext_resource type="Script" path="res://scripts/NewsTicker.gd" id="3_7kh45"]
 [ext_resource type="Script" path="res://scripts/World.gd" id="3_b1veo"]
 [ext_resource type="PackedScene" uid="uid://cyxq6luvtgxq8" path="res://scenes/SellPopup.tscn" id="3_dohl7"]
 [ext_resource type="PackedScene" uid="uid://brbqxqii34i3e" path="res://scenes/NewsPopup.tscn" id="4_vdd20"]
 [ext_resource type="PackedScene" uid="uid://d0mkig123s7oi" path="res://scenes/Menu.tscn" id="6_6860q"]
+[ext_resource type="PackedScene" uid="uid://h2pilxeen8p4" path="res://scenes/PortfolioPanel.tscn" id="7_sbtu7"]
+[ext_resource type="Script" path="res://scripts/PortfolioPanel.gd" id="8_aqa8o"]
+[ext_resource type="AudioStream" uid="uid://qq7547dgq1dj" path="res://assets/sfx/Button press 3.wav" id="10_2gu6w"]
+[ext_resource type="AudioStream" uid="uid://ch4frhk1uci63" path="res://assets/sfx/Button Can't be Pressed.wav" id="11_37cs1"]
+[ext_resource type="AudioStream" uid="uid://dedw0hnvww6y" path="res://assets/sfx/Newspaper Open.mp3" id="12_qslfr"]
+[ext_resource type="AudioStream" uid="uid://cdxtxs5s1ooa4" path="res://assets/sfx/Newspaper Close.mp3" id="13_q52i6"]
 [ext_resource type="Texture2D" uid="uid://dqcvnwqaxe0u6" path="res://assets/news.png" id="8_fpo17"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_g7qtt")
+
+[node name="BG Music" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("2_3w3vu")
 
 [node name="Menu" parent="." instance=ExtResource("6_6860q")]
 
@@ -20,13 +30,29 @@ script = ExtResource("3_b1veo")
 [node name="PopupGroup" type="Node2D" parent="World"]
 
 [node name="BuyPopup" parent="World/PopupGroup" instance=ExtResource("2_iu3ry")]
-anchors_preset = 0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = 251.0
+offset_top = 278.0
+offset_right = 251.0
+offset_bottom = 278.0
 
 [node name="SellPopup" parent="World/PopupGroup" instance=ExtResource("3_dohl7")]
+offset_left = 118.0
+offset_top = 245.0
+offset_right = 118.0
+offset_bottom = 245.0
 
 [node name="NewsPopup" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
+offset_left = 429.0
+offset_top = 318.0
+offset_right = 1456.0
+offset_bottom = 526.0
+
+[node name="PortfolioPanel" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
+offset_left = 175.0
+offset_top = 107.0
+offset_right = 1714.0
+offset_bottom = 943.0
+script = ExtResource("8_aqa8o")
 
 [node name="ButtonGroup" type="Node2D" parent="World"]
 
@@ -61,6 +87,11 @@ popup/item_0/text = "AAA"
 popup/item_1/text = "BBB"
 popup/item_1/id = 1
 
+[node name="Portfolio" type="Button" parent="World/ButtonGroup"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "1000$"
+
 [node name="NewsTickerLayer" type="CanvasLayer" parent="World"]
 script = ExtResource("3_7kh45")
 
@@ -79,10 +110,30 @@ offset_right = 315.0
 offset_bottom = 1112.0
 texture_normal = ExtResource("8_fpo17")
 
+[node name="Sounds" type="Node2D" parent="World"]
+
+[node name="Clickable" type="AudioStreamPlayer2D" parent="World/Sounds"]
+stream = ExtResource("10_2gu6w")
+bus = &"Click"
+
+[node name="Non-Clickable" type="AudioStreamPlayer2D" parent="World/Sounds"]
+stream = ExtResource("11_37cs1")
+bus = &"Non Click"
+
+[node name="News Open" type="AudioStreamPlayer2D" parent="World/Sounds"]
+stream = ExtResource("12_qslfr")
+bus = &"News Open"
+
+[node name="News Close" type="AudioStreamPlayer2D" parent="World/Sounds"]
+stream = ExtResource("13_q52i6")
+bus = &"News Close"
+
 [connection signal="tree_exited" from="Menu" to="." method="_on_menu_tree_exited"]
+[connection signal="buy_confirmed" from="World/PopupGroup/BuyPopup" to="." method="_on_buy_popup_buy_confirmed"]
 [connection signal="sell_confirmed" from="World/PopupGroup/SellPopup" to="." method="_on_sell_popup_sell_confirmed"]
 [connection signal="pressed" from="World/ButtonGroup/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Buy" to="." method="_on_buy_pressed"]
 [connection signal="item_selected" from="World/ButtonGroup/StockInfoDropdown" to="." method="_on_stock_info_dropdown_item_selected"]
+[connection signal="pressed" from="World/ButtonGroup/Portfolio" to="." method="_on_portfolio_pressed"]
 [connection signal="pressed" from="World/NewsTickerLayer/ReadMore" to="World/NewsTickerLayer" method="_on_read_more_pressed"]
