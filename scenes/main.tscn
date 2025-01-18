@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=34 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="Script" path="res://scripts/BGMusic.gd" id="2_3w3vu"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://h2pilxeen8p4" path="res://scenes/PortfolioPanel.tscn" id="7_sbtu7"]
 [ext_resource type="Script" path="res://scripts/PortfolioPanel.gd" id="8_aqa8o"]
 [ext_resource type="Texture2D" uid="uid://dqcvnwqaxe0u6" path="res://assets/news.png" id="8_fpo17"]
+[ext_resource type="Texture2D" uid="uid://3v4wfwqonuaj" path="res://assets/Sprite/next2.png" id="9_vggae"]
 [ext_resource type="AudioStream" uid="uid://qq7547dgq1dj" path="res://assets/sfx/Button press 3.wav" id="10_2gu6w"]
 [ext_resource type="Texture2D" uid="uid://2ce0e3x3cdu4" path="res://assets/Sprite/next.png" id="10_6tmc0"]
 [ext_resource type="Texture2D" uid="uid://yfxm0tvkgy3f" path="res://assets/Sprite/sell.png" id="10_m6nbu"]
@@ -72,16 +73,17 @@ script = ExtResource("8_aqa8o")
 [node name="ButtonGroup" type="Node2D" parent="World"]
 
 [node name="Next" type="TextureButton" parent="World/ButtonGroup"]
-offset_left = 1536.0
-offset_top = 663.0
-offset_right = 1842.0
-offset_bottom = 908.0
+offset_left = 1516.0
+offset_top = 717.0
+offset_right = 1813.0
+offset_bottom = 847.0
 texture_normal = ExtResource("10_6tmc0")
+texture_pressed = ExtResource("9_vggae")
 
 [node name="Sell" type="TextureButton" parent="World/ButtonGroup"]
-offset_left = 1181.0
+offset_left = 1214.0
 offset_top = 689.0
-offset_right = 1385.0
+offset_right = 1418.0
 offset_bottom = 893.0
 texture_normal = ExtResource("10_m6nbu")
 texture_pressed = ExtResource("11_dkm2n")
