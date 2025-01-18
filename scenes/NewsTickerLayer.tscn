@@ -1,44 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://duor5lu3htgay"]
+[gd_scene load_steps=3 format=3 uid="uid://duor5lu3htgay"]
 
-[sub_resource type="GDScript" id="GDScript_3kppi"]
-script/source = "extends CanvasLayer
-
-var news_item = {\"title\": \"title\", \"content\": \"content\"}
-@onready var news_popup = get_node(\"../NewsPopup\")
-
-func _ready():
-	update_news(\"Market in Turmoil\", \"Experts warn of a potential bubble...\")
-
-func update_news(title, content):
-	news_item = {\"title\": title, \"content\": content}
-	update_ticker()
-
-func update_ticker():
-	var label = $NewsTickerLabel # Assuming you named the RichTextLabel \"NewsTickerLabel\"
-	label.text = news_item.title + \": \" + news_item.content
-
-func _on_read_more_pressed() -> void:
-	news_popup.set_news_data(news_item.title, news_item.content)
-	news_popup.show()
-	pass # Replace with function body.
-"
+[ext_resource type="Script" path="res://scripts/NewsTicker.gd" id="1_yyvao"]
+[ext_resource type="Texture2D" uid="uid://dqcvnwqaxe0u6" path="res://assets/news.png" id="2_qjpli"]
 
 [node name="NewsTickerLayer" type="CanvasLayer"]
-script = SubResource("GDScript_3kppi")
+script = ExtResource("1_yyvao")
 
-[node name="NewsTickerLabel" type="RichTextLabel" parent="."]
-offset_left = 362.0
-offset_top = 968.0
-offset_right = 1130.0
-offset_bottom = 1026.0
-theme_override_font_sizes/normal_font_size = 20
+[node name="NewsTickerLabel" type="Label" parent="."]
+offset_left = 440.0
+offset_top = 947.0
+offset_right = 1319.0
+offset_bottom = 1005.0
+theme_override_font_sizes/font_size = 40
 text = "This is the news"
 
-[node name="ReadMore" type="Button" parent="."]
-offset_left = 1025.0
-offset_top = 964.0
-offset_right = 1168.0
-offset_bottom = 1014.0
-text = "Read More"
+[node name="ReadMore" type="TextureButton" parent="."]
+z_index = -10
+z_as_relative = false
+offset_left = 30.0
+offset_top = 827.0
+offset_right = 315.0
+offset_bottom = 1112.0
+texture_normal = ExtResource("2_qjpli")
 
 [connection signal="pressed" from="ReadMore" to="." method="_on_read_more_pressed"]
