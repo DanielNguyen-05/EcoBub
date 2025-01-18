@@ -39,6 +39,7 @@ func trigger_market_crash():
 
 
 func _on_buy_pressed() -> void:
+	buy_popup.update_stock_name()
 	buy_popup.show()
 	print("Buy pressed")
 	$"Click Button".play()

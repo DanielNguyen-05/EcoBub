@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=10 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="PackedScene" uid="uid://b8ektgpchyvvi" path="res://scenes/BuyPopup.tscn" id="2_iu3ry"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/bg_music.gd" id="7_1nra2"]
 [ext_resource type="PackedScene" uid="uid://bn80nsqirvcw0" path="res://scenes/events_music.tscn" id="8_ojl3h"]
 [ext_resource type="Script" path="res://scripts/events_music.gd" id="9_v8ggc"]
-[ext_resource type="AudioStream" uid="uid://ch4frhk1uci63" path="res://assets/sfx/Button Can't be Pressed.wav" id="10_krrni"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_g7qtt")
@@ -66,10 +65,6 @@ script = ExtResource("7_1nra2")
 
 [node name="Events Music" parent="." instance=ExtResource("8_ojl3h")]
 script = ExtResource("9_v8ggc")
-
-[node name="Non Clickable Button" parent="." instance=ExtResource("3_flcfr")]
-stream = ExtResource("10_krrni")
-bus = &"Non Click"
 
 [connection signal="buy_confirmed" from="BuyPopup" to="." method="_on_buy_popup_buy_confirmed"]
 [connection signal="pressed" from="ButtonGroup/Next" to="." method="_on_next_pressed"]
