@@ -18,13 +18,14 @@ script = ExtResource("1_5m01s")
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
 offset_top = 128.0
-offset_right = 1707.0
+offset_right = 1722.0
 offset_bottom = 237.0
 theme_override_colors/font_color = Color(0.0235294, 0.0196078, 0.0117647, 1)
 theme_override_font_sizes/font_size = 48
 text = "TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Content" type="Label" parent="."]
 layout_mode = 0

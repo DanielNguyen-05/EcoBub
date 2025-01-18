@@ -9,11 +9,12 @@ script = ExtResource("1_yyvao")
 
 [node name="NewsTickerLabel" type="Label" parent="."]
 offset_left = 440.0
-offset_top = 947.0
-offset_right = 1319.0
-offset_bottom = 1005.0
+offset_top = 938.0
+offset_right = 1821.0
+offset_bottom = 996.0
 theme_override_font_sizes/font_size = 40
 text = "This is the news"
+autowrap_mode = 3
 
 [node name="ReadMore" type="TextureButton" parent="."]
 z_index = -10
