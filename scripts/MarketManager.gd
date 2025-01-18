@@ -14,7 +14,7 @@ var owned_stocks = []
 var news_list = []
 var current_day = 0
 
-var game_duration = 300.0
+var game_duration = 180.0
 var game_over = false
 var panic_meter = 0.0
 
