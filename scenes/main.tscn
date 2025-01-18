@@ -64,6 +64,7 @@ text = "Read More"
 [node name="NewsPopup" parent="." instance=ExtResource("4_vdd20")]
 
 [connection signal="buy_confirmed" from="BuyPopup" to="." method="_on_buy_popup_buy_confirmed"]
+[connection signal="pressed" from="ButtonGroup/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="ButtonGroup/Sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="ButtonGroup/Buy" to="." method="_on_buy_pressed"]
 [connection signal="item_selected" from="ButtonGroup/StockInfoDropdown" to="." method="_on_stock_info_dropdown_item_selected"]
