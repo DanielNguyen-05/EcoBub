@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 # You can use this to access the singleton instance, for example: MarketManager.cash
 var cash = 1000.0
@@ -19,6 +19,7 @@ func _ready():
 	for stock_data in stock_list:
 		spawn_stock_bubble(stock_data.name, stock_data.initial_price, stock_data.growth_rate, stock_data.volatility)
 	print("MarketManager ready!") # Just to confirm it's loaded
+	pass
 
 # --- Stock Management ---
 func spawn_stock_bubble(name, initial_price, growth_rate, volatility):
@@ -57,7 +58,8 @@ func _on_sell_pressed() -> void:
 func _on_next_pressed() -> void:
 	print("Next pressed")
 	$"Sounds/Click Button".play()
-	pass # Replace with function body.
+	pass
+
 
 func _on_stock_info_dropdown_item_selected(index: int) -> void:
 	selected_stock = index
