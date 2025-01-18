@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkxpn0fivnv42"]
+
+[ext_resource type="Script" path="res://scripts/EndScreen.gd" id="1_t5d2h"]
+[ext_resource type="Texture2D" uid="uid://cybexcrmgdn6j" path="res://assets/EndScreen/quit.png" id="2_ub8h8"]
+[ext_resource type="Texture2D" uid="uid://ba8hi6a8hohie" path="res://assets/EndScreen/quitdone.png" id="3_k2225"]
+[ext_resource type="Texture2D" uid="uid://bttg06tdsp15k" path="res://assets/EndScreen/Group 1.png" id="4_ny1uo"]
+[ext_resource type="Texture2D" uid="uid://bsf4duxobxqtg" path="res://assets/EndScreen/try.png" id="4_s7f44"]
+[ext_resource type="Texture2D" uid="uid://bmndv5exjq1lk" path="res://assets/EndScreen/Your Total Value.png" id="5_dnjk2"]
+[ext_resource type="Texture2D" uid="uid://climu7sibomig" path="res://assets/EndScreen/trydone.png" id="5_w6ghs"]
+[ext_resource type="Texture2D" uid="uid://c0acecchp68kg" path="res://assets/EndScreen/Screenshot_2025-01-18_015214-removebg-preview 2.png" id="6_2t6h5"]
+[ext_resource type="FontFile" uid="uid://ryad6rh85jto" path="res://assets/Fonts/vhs_gothic/vhs-gothic.ttf" id="7_o5dyr"]
+
+[node name="EndScreen" type="Node2D"]
+script = ExtResource("1_t5d2h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="QuitButton" type="TextureButton" parent="."]
+offset_left = 146.0
+offset_top = 787.0
+offset_right = 497.0
+offset_bottom = 1010.0
+texture_normal = ExtResource("2_ub8h8")
+texture_pressed = ExtResource("3_k2225")
+
+[node name="TryAgainButton" type="TextureButton" parent="."]
+offset_left = 1440.0
+offset_top = 787.0
+offset_right = 1879.0
+offset_bottom = 1010.0
+texture_normal = ExtResource("4_s7f44")
+texture_pressed = ExtResource("5_w6ghs")
+
+[node name="EndGame" type="TextureRect" parent="."]
+offset_left = 356.0
+offset_top = 126.0
+offset_right = 1556.0
+offset_bottom = 351.0
+texture = ExtResource("4_ny1uo")
+
+[node name="Value" type="TextureRect" parent="."]
+offset_left = 504.0
+offset_top = 467.0
+offset_right = 932.0
+offset_bottom = 507.0
+texture = ExtResource("5_dnjk2")
+
+[node name="Money" type="TextureRect" parent="."]
+offset_left = 1222.0
+offset_top = 427.0
+offset_right = 1381.0
+offset_bottom = 533.0
+texture = ExtResource("6_2t6h5")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1027.0
+offset_top = 466.0
+offset_right = 1249.0
+offset_bottom = 538.0
+theme_override_colors/font_color = Color(1, 0.94902, 0.505882, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.94902, 0.505882, 1)
+theme_override_colors/font_outline_color = Color(1, 0.94902, 0.505882, 1)
+theme_override_fonts/font = ExtResource("7_o5dyr")
+theme_override_font_sizes/font_size = 36
+
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="TryAgainButton" to="." method="_on_try_again_button_pressed"]

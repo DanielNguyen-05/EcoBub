@@ -84,8 +84,14 @@ func update_stock_prices(stockId, delta):
 	stock_list[stockId].current_price += stock_list[stockId].growth_rate * delta
 	stock_list[stockId].current_price += RandomNumberGenerator.new().randf_range(-stock_list[stockId].volatility, stock_list[stockId].volatility)
 	pass # Implement later
+	
+func _process(delta: float) -> void:
+	trigger_market_crash()
 
 func trigger_market_crash():
+	cash = 200000
+	if Input.is_action_just_pressed("ui_right"):
+		get_tree().change_scene_to_file("res://scenes/EndScreen.tscn")
 	pass # Implement later
 
 

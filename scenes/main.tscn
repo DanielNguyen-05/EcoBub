@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=8 format=3 uid="uid://b5k0gafchpsay"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="PackedScene" uid="uid://b8ektgpchyvvi" path="res://scenes/BuyPopup.tscn" id="2_iu3ry"]
