@@ -25,7 +25,7 @@ var current_news_index = 0
 
 var selected_stock = null
 
-func _ready():	
+func _ready() -> void:	
 	# Spawn stock
 	for stock_data in stock_list:
 		spawn_stock_bubble(stock_data.name, stock_data.current_price, stock_data.growth_rate, stock_data.volatility)
@@ -64,15 +64,17 @@ func spawn_stock_bubble(name, current_price, growth_rate, volatility):
 	pass # Implement later
 
 # --- Player Actions ---
-func buy_stock(stockid: int, shares_quantity: int):
+func buy_stock(stockid: int, shares_quantity: int) -> void:
 	cash -= shares_quantity * stock_list[stockid]["current_price"]
 	
 	var stock_name = stock_list[stockid]["name"]
+	
 	
 	for owned in owned_stocks:
 		if owned.name == stock_name:
 			owned.shares += shares_quantity
 			portfolio_button.text = str(cash) + "$"
+			sell_popup.update_owned(owned_stocks)
 			return
 	
 	
@@ -83,9 +85,11 @@ func buy_stock(stockid: int, shares_quantity: int):
 	
 	sell_popup.update_owned(owned_stocks)
 	
-	return # Implement later
+	print(owned_stocks)
+	
+	pass # Implement later
 
-func sell_stock(stockid: int, shares_quantity: int):
+func sell_stock(stockid: int, shares_quantity: int) -> void:
 	cash += shares_quantity * stock_list[stockid]["current_price"]
 	
 	var stock_name = stock_list[stockid]["name"]
@@ -115,7 +119,6 @@ func next_day() -> void:
 	pass
 	
 func get_owned_stocks():
-	print(owned_stocks)
 	return owned_stocks
 
 func update_stock_prices(stockId, delta):
@@ -128,6 +131,7 @@ func trigger_market_crash():
 
 
 func _on_buy_pressed() -> void:
+	buy_popup.update_cash(cash)
 	buy_popup.update_stock_name()
 	buy_popup.show()
 	print("Buy pressed")

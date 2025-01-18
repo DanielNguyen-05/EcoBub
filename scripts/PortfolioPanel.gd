@@ -1,10 +1,16 @@
 extends Panel
 
+var owned = []
+
 func _ready() -> void:
 	hide()
 	pass
+	
+func update_owned(owned_stocks: Array):
+	owned.clear()
+	owned = owned_stocks
 
-func update_portfolio(cash, owned_stocks):
+func update_portfolio(cash: int, owned_stocks: Array):
 	$VBoxContainer/Cash.text = "Cash: " + str(cash) # Update cash label
 
 	# Clear existing stock rows (except headers)
@@ -17,6 +23,7 @@ func update_portfolio(cash, owned_stocks):
 	var total_portfolio_value = cash
 	var current_stocks = "Owned Stocks: "
 	
+	
 	for stock_name in owned_stocks:
 		current_stocks += stock_name["name"] + ", "
 		var shares = stock_name["shares"]
@@ -25,7 +32,7 @@ func update_portfolio(cash, owned_stocks):
 		for market_stocks in MarketManager.stock_list:
 			if market_stocks["name"] == stock_name.name:
 				price = market_stocks["current_price"]
-				pass
+				break
 		
 		var value = shares * price
 		total_portfolio_value += value
