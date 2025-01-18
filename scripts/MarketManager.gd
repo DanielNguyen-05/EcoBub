@@ -172,11 +172,10 @@ func update_stock_prices():
 		stock.current_price += RandomNumberGenerator.new().randf_range(-stock.volatility, stock.volatility)
 		panic_meter += stock.volatility
 		stock.later_price = stock.current_price + stock.growth_rate * RandomNumberGenerator.new().randf_range(-stock.volatility, stock.volatility)
+		stock.current_price = round(stock.current_price * 100) / 100
+		stock.later_price = round(stock.later_price * 100) / 100
 	
 	var id = $World/ButtonGroup/StockInfoDropdown.get_selected_id()
-
-	stock.current_price = round(stock.current_price * 100) / 100
-	stock.later_price = round(stock.later_price * 100) / 100
 	
 	match id:
 		0:
