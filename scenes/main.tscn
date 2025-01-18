@@ -65,24 +65,6 @@ script = ExtResource("3_b1veo")
 
 [node name="ESTATE" parent="World" instance=ExtResource("25_40600")]
 
-[node name="PopupGroup" type="Node2D" parent="World"]
-
-[node name="NewsPopup" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
-offset_left = 95.0
-offset_top = 82.0
-offset_right = 1819.0
-offset_bottom = 982.0
-
-[node name="PortfolioPanel" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
-
-[node name="NewsPopup2" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
-offset_left = 95.0
-offset_top = 82.0
-offset_right = 1819.0
-offset_bottom = 982.0
-
-[node name="PortfolioPanel2" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
-
 [node name="ButtonGroup" type="Node2D" parent="World"]
 
 [node name="Next" type="TextureButton" parent="World/ButtonGroup"]
@@ -188,6 +170,24 @@ offset_right = 1285.0
 offset_bottom = 175.0
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("20_vdvbn")
+
+[node name="PopupGroup" type="Node2D" parent="World"]
+
+[node name="NewsPopup" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
+offset_left = 95.0
+offset_top = 82.0
+offset_right = 1819.0
+offset_bottom = 982.0
+
+[node name="PortfolioPanel" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
+
+[node name="NewsPopup2" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
+offset_left = 95.0
+offset_top = 82.0
+offset_right = 1819.0
+offset_bottom = 982.0
+
+[node name="PortfolioPanel2" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
 
 [node name="PopupGroup2" type="Node2D" parent="World"]
 
