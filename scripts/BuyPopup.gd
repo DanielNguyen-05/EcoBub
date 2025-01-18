@@ -1,8 +1,8 @@
 extends Panel
 
 @onready var stock_option = $"../ButtonGroup/StockInfoDropdown"
-@onready var clickable = $"../Click Button"
-@onready var non_clickable = $"../Non Clickable Button"
+@onready var clickable = $"../Sounds/Click Button"
+@onready var non_clickable = $"../Sounds/Non Clickable Button"
 
 
 signal buy_confirmed(quantity)

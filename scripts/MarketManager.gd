@@ -43,7 +43,7 @@ func _on_buy_pressed() -> void:
 	buy_popup.update_stock_name()
 	buy_popup.show()
 	print("Buy pressed")
-	$"Click Button".play()
+	$"Sounds/Click Button".play()
 	pass # Replace with function body.
 
 
@@ -51,12 +51,12 @@ func _on_sell_pressed() -> void:
 	sell_popup.update_stock_name()
 	sell_popup.show()
 	print("Sell pressed")
-	$"Click Button".play()
+	$"Sounds/Click Button".play()
 	pass # Replace with function body.
 
 func _on_next_pressed() -> void:
 	print("Next pressed")
-	$"Click Button".play()
+	$"Sounds/Click Button".play()
 	pass # Replace with function body.
 
 func _on_stock_info_dropdown_item_selected(index: int) -> void:

@@ -1,6 +1,6 @@
 extends AudioStreamPlayer2D
 
-@onready var bg_player = $"../BG Music"
+@onready var bg_player = $"../Sounds/BG Music"
 
 var micro_list = [preload("res://assets/micro event/Micro Event 1.ogg"),
 				  preload("res://assets/micro event/Micro Event 2.ogg"),
