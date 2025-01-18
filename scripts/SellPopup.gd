@@ -20,7 +20,6 @@ func update_stock_name() -> void:
 	pass
 
 func update_owned(owned_stocks: Array):
-	owned.clear()
 	owned = owned_stocks
 
 func _on_ok_button_pressed() -> void:

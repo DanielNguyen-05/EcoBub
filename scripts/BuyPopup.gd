@@ -4,6 +4,8 @@ extends Panel
 
 signal buy_confirmed(quantity)
 
+var remaining_cash
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
@@ -17,6 +19,9 @@ func update_stock_name() -> void:
 		$"Stock Name".text = "Stock: Unselected"
 	pass
 
+func update_cash(cash: int):
+	remaining_cash = cash
+
 func _on_ok_button_pressed() -> void:
 	var quantity_text = $LineEdit.text
 	var selected_stock = stock_option.get_selected_id()
@@ -24,7 +29,7 @@ func _on_ok_button_pressed() -> void:
 		var quantity = int(quantity_text)
 		var price = MarketManager.stock_list[selected_stock]["current_price"]
 		
-		if quantity > 0 && price * quantity <= MarketManager.cash:
+		if quantity > 0 && price * quantity <= remaining_cash:
 			emit_signal("buy_confirmed", quantity)
 			$"../../Sounds/Clickable".play()
 			hide()
