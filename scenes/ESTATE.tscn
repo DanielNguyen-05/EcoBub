@@ -1,11 +1,11 @@
 [gd_scene load_steps=19 format=3 uid="uid://l48u5v0tnrf7"]
 
-[ext_resource type="Script" path="res://ESTATE.gd" id="1_gvrxh"]
+[ext_resource type="Script" path="res://scripts/ESTATE.gd" id="1_gvrxh"]
 [ext_resource type="Texture2D" uid="uid://2ce0e3x3cdu4" path="res://assets/Sprite/next.png" id="1_skadu"]
 [ext_resource type="Texture2D" uid="uid://3v4wfwqonuaj" path="res://assets/Sprite/next2.png" id="2_0at1l"]
 [ext_resource type="Texture2D" uid="uid://doudteimylffw" path="res://assets/Ball/Break/0.png" id="3_0ep2w"]
 [ext_resource type="Texture2D" uid="uid://ceixi3v2770dt" path="res://assets/Ball/Break/1.png" id="4_7j53g"]
-[ext_resource type="Script" path="res://Balloon4.gd" id="4_8pyeq"]
+[ext_resource type="Script" path="res://scripts/Balloon4.gd" id="4_8pyeq"]
 [ext_resource type="Texture2D" uid="uid://cg03uymc7fch1" path="res://assets/Ball/Break/2.png" id="5_n7u73"]
 [ext_resource type="Texture2D" uid="uid://h1fyjh6ouu6b" path="res://assets/Ball/Break/3.png" id="6_24y8n"]
 [ext_resource type="Texture2D" uid="uid://cmte4fe6qpwgh" path="res://assets/Ball/Break/4.png" id="7_d5uyu"]
