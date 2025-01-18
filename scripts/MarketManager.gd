@@ -31,7 +31,7 @@ var selected_stock = null
 
 func _ready() -> void:	
 	# Load news from CSV
-	load_news_from_csv("res://assets/news.csv")
+	load_news_from_csv("res://assets/news1.csv")
 	news_ticker.update_news(news_list[current_day].title, news_list[current_day].content)
 	print("MarketManager ready!") # Just to confirm it's loaded
 	return
@@ -137,7 +137,7 @@ func update_stock_prices():
 		stock.current_price += RandomNumberGenerator.new().randf_range(-stock.volatility, stock.volatility)
 		panic_meter += stock.volatility
 		stock.later_price = stock.current_price + stock.growth_rate * RandomNumberGenerator.new().randf_range(-stock.volatility, stock.volatility)
-	if panic_meter > 10:
+	if panic_meter > 50:
 		trigger_market_crash()
 	pass
 
@@ -150,6 +150,7 @@ func _process(delta: float) -> void:
 
 func trigger_market_crash():
 	# TODO: Play crash effect
+	print("Market_crash")
 	get_tree().change_scene_to_file("res://scenes/EndScreen.tscn")
 	pass # Implement later
 
