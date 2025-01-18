@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bg6d7wslol0eq"
+path="res://.godot/imported/Start Phase 9.ogg-acce3c90601b4d789b921d31b65fbe03.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/bg music/Start Phase 9.ogg"
+dest_files=["res://.godot/imported/Start Phase 9.ogg-acce3c90601b4d789b921d31b65fbe03.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
