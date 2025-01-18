@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=36 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="Script" path="res://scripts/BGMusic.gd" id="2_3w3vu"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://brbqxqii34i3e" path="res://scenes/NewsPopup.tscn" id="4_vdd20"]
 [ext_resource type="PackedScene" uid="uid://d0mkig123s7oi" path="res://scenes/Menu.tscn" id="6_6860q"]
 [ext_resource type="PackedScene" uid="uid://h2pilxeen8p4" path="res://scenes/PortfolioPanel.tscn" id="7_sbtu7"]
-[ext_resource type="Script" path="res://scripts/PortfolioPanel.gd" id="8_aqa8o"]
-[ext_resource type="Texture2D" uid="uid://dqcvnwqaxe0u6" path="res://assets/news.png" id="8_fpo17"]
 [ext_resource type="Texture2D" uid="uid://3v4wfwqonuaj" path="res://assets/Sprite/next2.png" id="9_vggae"]
 [ext_resource type="AudioStream" uid="uid://qq7547dgq1dj" path="res://assets/sfx/Button press 3.wav" id="10_2gu6w"]
 [ext_resource type="Texture2D" uid="uid://2ce0e3x3cdu4" path="res://assets/Sprite/next.png" id="10_6tmc0"]
@@ -76,11 +74,14 @@ offset_right = 1819.0
 offset_bottom = 982.0
 
 [node name="PortfolioPanel" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
-offset_left = 175.0
-offset_top = 107.0
-offset_right = 1714.0
-offset_bottom = 943.0
-script = ExtResource("8_aqa8o")
+
+[node name="NewsPopup2" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
+offset_left = 95.0
+offset_top = 82.0
+offset_right = 1819.0
+offset_bottom = 982.0
+
+[node name="PortfolioPanel2" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
 
 [node name="ButtonGroup" type="Node2D" parent="World"]
 
@@ -188,15 +189,7 @@ offset_bottom = 175.0
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("20_vdvbn")
 
-[node name="PopupGroup" type="Node2D" parent="World"]
-
-[node name="NewsPopup" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
-offset_left = 95.0
-offset_top = 82.0
-offset_right = 1819.0
-offset_bottom = 982.0
-
-[node name="PortfolioPanel" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
+[node name="PopupGroup2" type="Node2D" parent="World"]
 
 [node name="NewsTickerLayer" parent="World" instance=ExtResource("20_q4l58")]
 layer = -1

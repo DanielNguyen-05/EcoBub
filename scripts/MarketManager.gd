@@ -5,10 +5,10 @@ var cash = 1000.0
 var count = 0
 
 var stock_list = [
-	{"name": "TECH", "current_price": 75.0, "growth_rate": 0.2, "volatility": 0.5},
-	{"name": "RENEW ENERGY", "current_price": 51.0, "growth_rate": 0.1, "volatility": 0.2},
-	{"name": "CRYPTO", "current_price": 60.0, "growth_rate": 0.3, "volatility": 0.5},
-	{"name": "REAL ESTATE", "current_price": 92.0, "growth_rate": 0.9, "volatility": 0.5},
+	{"name": "TECH", "current_price": 75.0, "growth_rate": 0.2, "volatility": 0.5, "later_price": 51.0},
+	{"name": "RENEW ENERGY", "current_price": 51.0, "growth_rate": 0.1, "volatility": 0.2, "later_price": 51.0},
+	{"name": "CRYPTO", "current_price": 60.0, "growth_rate": 0.3, "volatility": 0.5, "later_price": 51.0},
+	{"name": "REAL ESTATE", "current_price": 92.0, "growth_rate": 0.9, "volatility": 0.5, "later_price": 51.0},
 ]
 
 var owned_stocks = []
