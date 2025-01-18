@@ -39,7 +39,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"BREAK",
-"speed": 5.5
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -97,5 +97,4 @@ script = ExtResource("4_82g3b")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Balloon2"]
 position = Vector2(1667, 465)
 sprite_frames = SubResource("SpriteFrames_cfyhg")
-animation = &"NORMAL"
-autoplay = "NORMAL"
+animation = &"BREAK"

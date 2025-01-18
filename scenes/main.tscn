@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=41 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="Script" path="res://scripts/BGMusic.gd" id="2_3w3vu"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://bwyemcsdif36n" path="res://scenes/ENERGY.tscn" id="24_dlmhx"]
 [ext_resource type="PackedScene" uid="uid://l48u5v0tnrf7" path="res://scenes/ESTATE.tscn" id="25_40600"]
 [ext_resource type="PackedScene" uid="uid://bukp5f4v1oxfp" path="res://scenes/EndScreen.tscn" id="30_op6e2"]
+[ext_resource type="Script" path="res://scenes/LastLabel.gd" id="32_ol63n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8vjk"]
 
@@ -226,9 +227,25 @@ bus = &"News Open"
 stream = ExtResource("13_q52i6")
 bus = &"News Close"
 
+[node name="LastLabel" type="Label" parent="World"]
+offset_left = 222.0
+offset_top = 270.0
+offset_right = 1657.0
+offset_bottom = 531.0
+theme_override_font_sizes/font_size = 52
+text = "Please choose the stock you would like to invest !!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("32_ol63n")
+
 [node name="EndScreen" parent="." instance=ExtResource("30_op6e2")]
 
 [connection signal="networth_update" from="." to="EndScreen" method="_on_main_networth_update"]
+[connection signal="panic_update" from="." to="World/TECHNOLOGY" method="_on_main_panic_update"]
+[connection signal="panic_update" from="." to="World/CRYPTOCURRENCY" method="_on_main_panic_update"]
+[connection signal="panic_update" from="." to="World/ENERGY" method="_on_main_panic_update"]
+[connection signal="panic_update" from="." to="World/ESTATE" method="_on_main_panic_update"]
 [connection signal="tree_exited" from="Menu" to="." method="_on_menu_tree_exited"]
 [connection signal="pressed" from="World/ButtonGroup/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Next" to="World/TECHNOLOGY" method="_on_next_pressed"]
@@ -244,6 +261,7 @@ bus = &"News Close"
 [connection signal="item_selected" from="World/ButtonGroup/StockInfoDropdown" to="World/CRYPTOCURRENCY" method="_on_stock_info_dropdown_item_selected"]
 [connection signal="item_selected" from="World/ButtonGroup/StockInfoDropdown" to="World/ENERGY" method="_on_stock_info_dropdown_item_selected"]
 [connection signal="item_selected" from="World/ButtonGroup/StockInfoDropdown" to="World/ESTATE" method="_on_stock_info_dropdown_item_selected"]
+[connection signal="pressed" from="World/ButtonGroup/StockInfoDropdown" to="World/LastLabel" method="_on_stock_info_dropdown_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Portfolio" to="." method="_on_portfolio_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Increase" to="." method="_on_increase_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Decrease" to="." method="_on_decrease_pressed"]

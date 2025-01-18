@@ -1,5 +1,8 @@
 extends Node2D
 
+var current_bubble_state = 0
+@onready var animated = get_node("Balloon4/AnimatedSprite2D")
+
 # Chart data and dimensions
 var data_points: Array = []
 var view_offset: float = 0
@@ -229,9 +232,19 @@ func _on_next_pressed() -> void:
 	
 	queue_redraw()
 
-
 func _on_stock_info_dropdown_item_selected(index: int) -> void:
 	if index == 3:
 		show()
 	else:
 		hide()
+
+func _on_main_panic_update(net: Variant) -> void:
+	current_bubble_state = net
+	
+func _process(delta: float) -> void:
+	if current_bubble_state == 0:
+		animated.play("NORMAL")
+	elif current_bubble_state == 1:
+		animated.play("DANGER")
+	else:
+		animated.play("BREAK")

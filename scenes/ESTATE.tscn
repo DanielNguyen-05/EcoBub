@@ -36,7 +36,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"BREAK",
-"speed": 5.5
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -94,4 +94,4 @@ script = ExtResource("4_8pyeq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Balloon4"]
 position = Vector2(1667, 465)
 sprite_frames = SubResource("SpriteFrames_hietn")
-animation = &"BREAK"
+animation = &"DANGER"

@@ -22,10 +22,12 @@ var news_list3 = []
 var current_day = 0
 
 signal networth_update(net)
+signal panic_update(net)
 
 var game_duration = 180.0
 var game_over = false
 var panic_meter = 0.0
+
 
 @onready var buy_button = get_node("../Main/World/ButtonGroup/Buy")
 @onready var sell_button = get_node("../Main/World/ButtonGroup/Sell")
@@ -191,6 +193,8 @@ func update_stock_prices():
 		trigger_market_crash()
 	
 	pass
+	
+var panic_state = 0
 
 func _process(delta: float) -> void:
 	game_duration -= delta
@@ -198,7 +202,13 @@ func _process(delta: float) -> void:
 		game_over = true
 	if game_over:
 		trigger_market_crash()
-
+	if panic_meter > 23 && panic_state == 0:
+		emit_signal("panic_update", 1)
+		panic_state += 1
+	if panic_meter > 46 && panic_state == 1:
+		emit_signal("panic_update", 2)
+		panic_state += 1
+	
 func trigger_market_crash():
 	# TODO: Play crash effect
 	var price
