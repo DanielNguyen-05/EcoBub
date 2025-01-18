@@ -41,7 +41,6 @@ func _on_ok_button_pressed() -> void:
 		pass
 	pass # Replace with function body.
 
-
 func _on_cancel_button_pressed() -> void:
 	clickable.play()
 	hide()

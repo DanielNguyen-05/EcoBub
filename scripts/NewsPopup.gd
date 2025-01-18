@@ -11,7 +11,6 @@ func set_news_data(title, content):
 	ntitle.text = title
 	ncontent.text = content
 
-
 func _on_close_pressed() -> void:
 	news_close.play(0.5)
 	hide()

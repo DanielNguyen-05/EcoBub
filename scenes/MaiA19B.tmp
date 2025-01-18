@@ -78,7 +78,6 @@ offset_right = 1168.0
 offset_bottom = 1014.0
 text = "Read More"
 
-[connection signal="tree_exited" from="Menu" to="." method="_on_menu_tree_exited"]
 [connection signal="sell_confirmed" from="World/PopupGroup/SellPopup" to="." method="_on_sell_popup_sell_confirmed"]
 [connection signal="pressed" from="World/ButtonGroup/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Sell" to="." method="_on_sell_pressed"]

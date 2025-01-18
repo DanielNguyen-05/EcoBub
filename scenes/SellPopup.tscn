@@ -1,52 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddtac3csy1k83"]
+[gd_scene load_steps=2 format=3 uid="uid://cyxq6luvtgxq8"]
 
-[ext_resource type="Script" path="res://scripts/BuyPopup.gd" id="1_528qn"]
+[ext_resource type="Script" path="res://scripts/SellPopup.gd" id="1_rmsvd"]
 
-[node name="BuyPopup" type="Panel"]
-anchors_preset = -1
-anchor_right = 0.185
-anchor_bottom = 0.168
-offset_right = -355.2
-offset_bottom = -181.44
-script = ExtResource("1_528qn")
+[node name="SellPopup" type="Panel"]
+offset_bottom = 8.0
+script = ExtResource("1_rmsvd")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 69.0
-offset_right = 224.0
-offset_bottom = 99.0
+offset_left = 409.0
+offset_top = 100.0
+offset_right = 941.0
+offset_bottom = 183.0
+theme_override_font_sizes/font_size = 50
 text = "Enter quantity to sell:"
-
-[node name="Stock Name" type="Label" parent="."]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 21.0
-offset_right = 224.0
-offset_bottom = 51.0
-text = "Stock: "
 
 [node name="LineEdit" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 244.0
-offset_top = 69.0
-offset_right = 334.0
-offset_bottom = 101.0
+offset_left = 971.0
+offset_top = 93.0
+offset_right = 1291.0
+offset_bottom = 170.0
+theme_override_font_sizes/font_size = 50
 
 [node name="OkButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 57.0
-offset_top = 139.0
-offset_right = 164.0
-offset_bottom = 178.0
+offset_left = 916.0
+offset_top = 251.0
+offset_right = 1256.0
+offset_bottom = 347.0
+theme_override_font_sizes/font_size = 50
 text = "Confirm"
 
 [node name="CancelButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 225.0
-offset_top = 139.0
-offset_right = 334.0
-offset_bottom = 179.0
+offset_left = 470.0
+offset_top = 258.0
+offset_right = 810.0
+offset_bottom = 354.0
+theme_override_font_sizes/font_size = 50
 text = "Cancel"
 
 [connection signal="pressed" from="OkButton" to="." method="_on_ok_button_pressed"]
