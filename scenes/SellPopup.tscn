@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cyxq6luvtgxq8"]
 
-[ext_resource type="Script" path="res://scripts/SellPopup.gd" id="1_rmsvd"]
+[ext_resource type="Script" path="res://scripts/SellButton.gd" id="1_rmsvd"]
 
 [node name="SellPopup" type="Panel"]
 offset_bottom = 8.0

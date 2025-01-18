@@ -1,17 +1,12 @@
 extends Panel
 
-var owned = []
 
 func _ready() -> void:
 	hide()
 	pass
-	
-func update_owned(owned_stocks: Array):
-	owned.clear()
-	owned = owned_stocks
 
-func update_portfolio(cash: int, owned_stocks: Array):
-	$VBoxContainer/Cash.text = "Cash: " + str(cash) # Update cash label
+func update_portfolio(cash: int, owned_stocks: Array, stock_list: Array):
+	$VBoxContainer/Cash.text = "Cash: " + str(ceil(cash * 100)/100) # Update cash label
 
 	# Clear existing stock rows (except headers)
 	for i in range($VBoxContainer.get_child_count() - 1, 2, -1):
@@ -20,7 +15,7 @@ func update_portfolio(cash: int, owned_stocks: Array):
 			$VBoxContainer.remove_child(child)
 			child.queue_free()
 
-	var total_portfolio_value = cash
+	var total_portfolio_value = ceil(cash * 100)/100
 	var current_stocks = "Owned Stocks: "
 	
 	
@@ -29,7 +24,7 @@ func update_portfolio(cash: int, owned_stocks: Array):
 		var shares = stock_name["shares"]
 		var price
 		
-		for market_stocks in MarketManager.stock_list:
+		for market_stocks in stock_list:
 			if market_stocks["name"] == stock_name.name:
 				price = market_stocks["current_price"]
 				break
@@ -46,8 +41,8 @@ func update_portfolio(cash: int, owned_stocks: Array):
 
 		name_label.text = stock_name.name
 		shares_label.text = "Shares: " + str(shares)
-		price_label.text = "Prices: " + str(price)
-		value_label.text = "Total Value: " + str(value)
+		price_label.text = "Prices: " + str(ceil(price * 100)/100)
+		value_label.text = "Total Value: " + str(ceil(value * 100)/100)
 
 		hbox.add_child(name_label)
 		hbox.add_child(shares_label)
@@ -59,7 +54,7 @@ func update_portfolio(cash: int, owned_stocks: Array):
 		current_stocks = current_stocks.erase(current_stocks.length() - 2, 2)
 	
 	$VBoxContainer/OwnedStocks.text = current_stocks
-	$VBoxContainer/NetWorth.text = "NetWorth: " + str(total_portfolio_value)
+	$VBoxContainer/NetWorth.text = "NetWorth: " + str(ceil(total_portfolio_value * 100)/100)
 
 
 func _on_confirm_button_pressed():
