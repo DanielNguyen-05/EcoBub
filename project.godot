@@ -31,3 +31,5 @@ project/assembly_name="Bubble"
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/size/viewport_height=648
+textures/size/viewport_width=1152
