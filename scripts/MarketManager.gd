@@ -38,6 +38,7 @@ var selected_stock = null
 var selected_story = 0
 
 func getnews(listid, day):
+	day = day % 19
 	if listid == 0:
 		return news_list0[day]
 	elif listid == 1:
@@ -144,9 +145,9 @@ func next_day() -> void:
 	#draw graph(current price, later price)
 	selected_story = RandomNumberGenerator.new().randi_range(0, 3)
 	if current_day - 1 >= 0:
-		affect_later_stock_price(getnews(selected_story, current_day - 1).stock, getnews(selected_story, current_day - 1).impact)
+		affect_later_stock_price(getnews(selected_story, current_day - 1).stock - 1, getnews(selected_story, current_day - 1).impact)
 	current_day += 1
-	news_ticker.update_news(getnews(selected_story, current_day).title, getnews(selected_story, current_day - 1).content)
+	news_ticker.update_news(getnews(selected_story, current_day).title, getnews(selected_story, current_day).content)
 	update_stock_prices()
 
 	pass
@@ -156,7 +157,7 @@ func get_owned_stocks():
 
 func affect_later_stock_price(stockID, impact):
 	# TODO: Implement this function to affect the stock price more realistically
-	stock_list[stockID-1]["later_price"] += impact * stock_list[stockID]["growth_rate"]
+	stock_list[stockID]["later_price"] += impact * stock_list[stockID]["growth_rate"]
 	if impact > 2:
 		stock_list[stockID]["volatility"] += 0.2
 
