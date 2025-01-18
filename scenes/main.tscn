@@ -71,7 +71,10 @@ offset_right = 1168.0
 offset_bottom = 1014.0
 text = "Read More"
 
-[connection signal="buy_confirmed" from="PopupGroup/BuyPopup" to="." method="_on_buy_popup_buy_confirmed"]
+[node name="NewsPopup" parent="." instance=ExtResource("4_vdd20")]
+
+[connection signal="buy_confirmed" from="BuyPopup" to="." method="_on_buy_popup_buy_confirmed"]
+[connection signal="pressed" from="ButtonGroup/Next" to="." method="_on_next_pressed"]
 [connection signal="sell_confirmed" from="PopupGroup/SellPopup" to="." method="_on_sell_popup_sell_confirmed"]
 [connection signal="pressed" from="ButtonGroup/Sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="ButtonGroup/Buy" to="." method="_on_buy_pressed"]
