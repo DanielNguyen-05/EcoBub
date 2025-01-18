@@ -127,6 +127,7 @@ func get_owned_stocks():
 func update_stock_prices(stockId, delta):
 	stock_list[stockId].current_price += stock_list[stockId].growth_rate * delta
 	stock_list[stockId].current_price += RandomNumberGenerator.new().randf_range(-stock_list[stockId].volatility, stock_list[stockId].volatility)
+	$"World/ButtonGroup/Stock Price".text = str(ceil(stock_list[stockId].current_price * 100)/100)
 	pass # Implement later
 	
 func _process(delta: float) -> void:
@@ -159,14 +160,18 @@ func _on_next_pressed() -> void:
 func _on_stock_info_dropdown_item_selected(index: int) -> void:
 	selected_stock = index
 	var numb = "0"
+	var price = str(ceil(stock_list[selected_stock]["current_price"] * 100)/100)
+	
 	if selected_stock == -1:
 		numb = "-"
+		price = "-"
 	else:
 		for owned in owned_stocks:
 			if owned.name == stock_list[selected_stock].name:
 				numb = str(owned.shares)
 				break
 	$"World/ButtonGroup/Stock Number".text = numb
+	$"World/ButtonGroup/Stock Price".text = price
 	return # Replace with function body.
 
 
