@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=40 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="Script" path="res://scripts/BGMusic.gd" id="2_3w3vu"]
@@ -26,9 +26,12 @@
 [ext_resource type="PackedScene" uid="uid://duor5lu3htgay" path="res://scenes/NewsTickerLayer.tscn" id="20_q4l58"]
 [ext_resource type="Texture2D" uid="uid://dfj2k4e32185x" path="res://assets/Sprite/stock price.png" id="20_vdvbn"]
 [ext_resource type="PackedScene" uid="uid://8cchwbg58eab" path="res://scenes/TECHNOLOGY.tscn" id="22_wywoi"]
+[ext_resource type="Texture2D" uid="uid://cdttfh3lq7e0g" path="res://assets/Sprite/Box 1.png" id="23_415ky"]
 [ext_resource type="PackedScene" uid="uid://8fprdb23uv2w" path="res://scenes/CRYPTOCURRENCY.tscn" id="23_n137q"]
+[ext_resource type="Texture2D" uid="uid://cs4gqcdhlu3ll" path="res://assets/Sprite/Box 2.png" id="24_2cywk"]
 [ext_resource type="PackedScene" uid="uid://bwyemcsdif36n" path="res://scenes/ENERGY.tscn" id="24_dlmhx"]
 [ext_resource type="PackedScene" uid="uid://l48u5v0tnrf7" path="res://scenes/ESTATE.tscn" id="25_40600"]
+[ext_resource type="PackedScene" uid="uid://bukp5f4v1oxfp" path="res://scenes/EndScreen.tscn" id="30_op6e2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8vjk"]
 
@@ -41,6 +44,20 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_enaef"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_awerg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yalc6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_415ky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_2cywk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_g7qtt")
@@ -171,6 +188,13 @@ offset_bottom = 159.0
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("20_vdvbn")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/ButtonGroup"]
+position = Vector2(1679.1, 69.75)
+scale = Vector2(0.718148, 0.503333)
+sprite_frames = SubResource("SpriteFrames_yalc6")
+autoplay = "default"
+frame_progress = 0.0966893
+
 [node name="PopupGroup" type="Node2D" parent="World"]
 
 [node name="NewsPopup" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
@@ -180,14 +204,6 @@ offset_right = 1819.0
 offset_bottom = 982.0
 
 [node name="PortfolioPanel" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
-
-[node name="NewsPopup2" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
-offset_left = 95.0
-offset_top = 82.0
-offset_right = 1819.0
-offset_bottom = 982.0
-
-[node name="PortfolioPanel2" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
 
 [node name="NewsTickerLayer" parent="World" instance=ExtResource("20_q4l58")]
 layer = -1
@@ -210,6 +226,9 @@ bus = &"News Open"
 stream = ExtResource("13_q52i6")
 bus = &"News Close"
 
+[node name="EndScreen" parent="." instance=ExtResource("30_op6e2")]
+
+[connection signal="networth_update" from="." to="EndScreen" method="_on_main_networth_update"]
 [connection signal="tree_exited" from="Menu" to="." method="_on_menu_tree_exited"]
 [connection signal="pressed" from="World/ButtonGroup/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Next" to="World/TECHNOLOGY" method="_on_next_pressed"]
