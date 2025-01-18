@@ -129,10 +129,10 @@ popup/item_3/text = "REAL ESTATE"
 popup/item_3/id = 3
 
 [node name="Stock Number" type="Label" parent="World/ButtonGroup"]
-offset_left = 1500.0
-offset_top = 107.0
-offset_right = 1681.0
-offset_bottom = 159.0
+offset_left = 1497.0
+offset_top = 117.0
+offset_right = 1678.0
+offset_bottom = 169.0
 theme_override_font_sizes/font_size = 38
 
 [node name="Portfolio" type="Button" parent="World/ButtonGroup"]
