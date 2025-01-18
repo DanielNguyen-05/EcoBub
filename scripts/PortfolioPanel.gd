@@ -5,7 +5,7 @@ func _ready() -> void:
 	pass
 
 func update_portfolio(cash, owned_stocks):
-	$VBoxContainer/Cash.text = str(cash) # Update cash label
+	$VBoxContainer/Cash.text = "Cash: " + str(cash) # Update cash label
 
 	# Clear existing stock rows (except headers)
 	for i in range($VBoxContainer.get_child_count() - 1, 2, -1):
@@ -15,12 +15,18 @@ func update_portfolio(cash, owned_stocks):
 			child.queue_free()
 
 	var total_portfolio_value = cash
-	var stocks = "Owned Stocks: "
+	var current_stocks = "Owned Stocks: "
 	
 	for stock_name in owned_stocks:
-		stocks += stock_name + ", "
-		var shares = owned_stocks[stock_name].shares
-		var price = owned_stocks[stock_name].price
+		current_stocks += stock_name["name"] + ", "
+		var shares = stock_name["shares"]
+		var price
+		
+		for market_stocks in MarketManager.stock_list:
+			if market_stocks["name"] == stock_name.name:
+				price = market_stocks["current price"]
+				pass
+		
 		var value = shares * price
 		total_portfolio_value += value
 
@@ -31,7 +37,7 @@ func update_portfolio(cash, owned_stocks):
 		var price_label = Label.new()
 		var value_label = Label.new()
 
-		name_label.text = stock_name
+		name_label.text = stock_name.name
 		shares_label.text = "Shares: " + str(shares)
 		price_label.text = "Prices: " + str(price)
 		value_label.text = "Total Value: " + str(value)
@@ -42,10 +48,10 @@ func update_portfolio(cash, owned_stocks):
 		hbox.add_child(value_label)
 		$VBoxContainer.add_child(hbox)
 	
-	if stocks.ends_with(", "):
-		stocks = stocks.erase(stocks.length() - 2, 2)
+	if current_stocks.ends_with(", "):
+		current_stocks = current_stocks.erase(current_stocks.length() - 2, 2)
 	
-	$VBoxContainer/OwnedStocks.text = stocks
+	$VBoxContainer/OwnedStocks.text = current_stocks
 	$VBoxContainer/NetWorth.text = "NetWorth: " + str(total_portfolio_value)
 
 

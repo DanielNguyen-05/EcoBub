@@ -5,7 +5,7 @@ extends Panel
 @onready var non_clickable = $"../Sounds/Non Clickable Button"
 
 
-signal buy_confirmed(quantity)
+signal sell_confirmed(quantity)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,10 +25,11 @@ func _on_ok_button_pressed() -> void:
 	var selected_stock = stock_option.get_selected_id()
 	if quantity_text.is_valid_int() && selected_stock != -1:
 		var quantity = int(quantity_text)
-		var price = MarketManager.stock_list[selected_stock]["current price"]
+		var owned_quantity = -1
 		
-		if quantity > 0 && price * quantity <= MarketManager.cash:
-			emit_signal("buy_confirmed", quantity)
+		
+		if quantity > 0 && quantity <= owned_quantity:
+			emit_signal("sell_confirmed", quantity)
 			clickable.play()
 			hide()
 		else:

@@ -1,16 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=17 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="PackedScene" uid="uid://b8ektgpchyvvi" path="res://scenes/BuyPopup.tscn" id="2_iu3ry"]
 [ext_resource type="PackedScene" uid="uid://ddtac3csy1k83" path="res://scenes/SellPopup.tscn" id="3_1u47s"]
-[ext_resource type="PackedScene" uid="uid://duor5lu3htgay" path="res://scenes/news_ticker_layer.tscn" id="3_7vwx8"]
-[ext_resource type="PackedScene" uid="uid://b31usg7j8hiog" path="res://scenes/click_button.tscn" id="3_flcfr"]
+[ext_resource type="PackedScene" uid="uid://duor5lu3htgay" path="res://scenes/NewsTickerLayer.tscn" id="3_7vwx8"]
+[ext_resource type="PackedScene" uid="uid://b31usg7j8hiog" path="res://scenes/ClickButton.tscn" id="3_flcfr"]
+[ext_resource type="Script" path="res://scripts/SellPopup.gd" id="4_aikv6"]
 [ext_resource type="Script" path="res://scripts/NewsTicker.gd" id="4_qyicq"]
 [ext_resource type="PackedScene" uid="uid://brbqxqii34i3e" path="res://scenes/NewsPopup.tscn" id="4_vdd20"]
 [ext_resource type="Script" path="res://scripts/BGMusic.gd" id="7_1nra2"]
 [ext_resource type="PackedScene" uid="uid://h2pilxeen8p4" path="res://scenes/PortfolioPanel.tscn" id="7_2y06r"]
-[ext_resource type="PackedScene" uid="uid://bn80nsqirvcw0" path="res://scenes/events_music.tscn" id="8_ojl3h"]
-[ext_resource type="Script" path="res://scripts/portfolio_panel.gd" id="9_oxp52"]
+[ext_resource type="PackedScene" uid="uid://bn80nsqirvcw0" path="res://scenes/EventsMusic.tscn" id="8_ojl3h"]
+[ext_resource type="Script" path="res://scripts/PortfolioPanel.gd" id="9_oxp52"]
 [ext_resource type="Script" path="res://scripts/EventMusic.gd" id="9_v8ggc"]
 [ext_resource type="AudioStream" uid="uid://ch4frhk1uci63" path="res://assets/sfx/Button Can't be Pressed.wav" id="10_krrni"]
 [ext_resource type="AudioStream" uid="uid://dedw0hnvww6y" path="res://assets/sfx/Newspaper Open.mp3" id="12_8gdnh"]
@@ -30,6 +31,7 @@ offset_left = 734.0
 offset_top = 344.0
 offset_right = 734.0
 offset_bottom = 344.0
+script = ExtResource("4_aikv6")
 
 [node name="ButtonGroup" type="Node2D" parent="."]
 
