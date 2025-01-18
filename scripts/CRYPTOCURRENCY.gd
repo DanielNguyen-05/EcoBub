@@ -19,8 +19,8 @@ var scale_factor: float
 
 # Visual settings
 const OFFSET: float = 50.0
-const CHART_WIDTH_RATIO: float = 0.5
-const CHART_HEIGHT_RATIO: float = 0.5
+const CHART_WIDTH_RATIO: float = 0.45
+const CHART_HEIGHT_RATIO: float = 0.45
 const MIN_PRICE: float = 100.0
 const MAX_PRICE: float = 300.0
 const WICK_THICKNESS: float = 2.0
@@ -96,6 +96,7 @@ func _ready() -> void:
 	_setup_chart_dimensions()
 	generate_initial_data()
 	queue_redraw()
+	hide()
 
 func _initialize_font() -> void:
 	font = load("res://assets/Fonts/vhs_gothic/vhs-gothic.ttf")
@@ -176,7 +177,7 @@ func _draw_wicks(x_pos: float, y_pos: Dictionary) -> void:
 	draw_line(
 		Vector2(center_x, y_pos["high"]),
 		Vector2(center_x, min_y),
-		Color.BLACK,
+		Color.WHITE,
 		WICK_THICKNESS
 	)
 	
@@ -184,7 +185,7 @@ func _draw_wicks(x_pos: float, y_pos: Dictionary) -> void:
 	draw_line(
 		Vector2(center_x, max_y),
 		Vector2(center_x, y_pos["low"]),
-		Color.BLACK,
+		Color.WHITE,
 		WICK_THICKNESS
 	)
 
@@ -201,8 +202,8 @@ func _draw_body(x_pos: float, y_pos: Dictionary, is_bullish: bool) -> void:
 func _draw_date_label(x_pos: float, index: int) -> void:
 	var date_str = get_date_string(start_date, index)
 	var label_pos = Vector2(
-		x_pos + bar_width / 2 - 33,
-		chart_top + chart_height - 240
+		x_pos + bar_width / 2 - 32,
+		chart_top + chart_height - 200
 	)
 	# Corrected parameter order for draw_string
 	draw_string(
@@ -219,7 +220,7 @@ func get_date_string(base_date: Dictionary, index: int) -> String:
 	return "%02d/%02d" % [date.day, date.month]
 
 
-func _on_texture_button_pressed() -> void:
+func _on_next_pressed() -> void:
 	view_offset += bar_width + bar_spacing
 	
 	# Generate new data if needed
@@ -227,3 +228,11 @@ func _on_texture_button_pressed() -> void:
 		data_points.append(generate_random_candlestick())
 	
 	queue_redraw()
+
+
+func _on_stock_info_dropdown_item_selected(index: int) -> void:
+	if index == 2:
+		show()
+	else:
+		hide()
+		

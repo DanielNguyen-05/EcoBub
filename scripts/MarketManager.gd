@@ -23,8 +23,8 @@ var panic_meter = 0.0
 @onready var stock_info_dropdown = get_node("../Main/World/ButtonGroup/StockInfoDropdown")
 @onready var news_ticker = get_node("../Main/World/NewsTickerLayer")
 @onready var Menu = get_node("../Main/Menu")
-@onready var portfolio = get_node("World/PopupGroup/PortfolioPanel")
-@onready var portfolio_button = get_node("World/ButtonGroup/Portfolio")
+@onready var portfolio = get_node("../Main/World/PopupGroup/PortfolioPanel")
+@onready var portfolio_button = get_node("../Main/World/ButtonGroup/Portfolio")
 @onready var World = get_node("../Main/World")
 
 var selected_stock = null
@@ -187,6 +187,8 @@ func _on_stock_info_dropdown_item_selected(index: int) -> void:
 				break
 	$"World/ButtonGroup/Stock Number".text = numb
 	$"World/ButtonGroup/Stock Price".text = price
+	
+		
 	return # Replace with function body.
 
 

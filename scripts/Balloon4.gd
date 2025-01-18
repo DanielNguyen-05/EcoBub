@@ -23,9 +23,9 @@ func _ready():
 	set_state(State.NORMAL)  # Set the initial state to Normal
 	
 	# Pre-load textures for each state
-	normal_textures = [load("res://normal_1.png"), load("res://normal_2.png")]
-	danger_textures = [load("res://danger_1.png"), load("res://danger_2.png")]
-	break_textures = [load("res://break_1.png"), load("res://break_2.png")]
+	normal_textures = [load("res://assets/Ball/Normal/0.png"), load("res://assets/Ball/Normal/1.png"), load("res://assets/Ball/Normal/2.png"), load("res://assets/Ball/Normal/3.png")]
+	danger_textures = [load("res://assets/Ball/Danger/0.png"), load("res://assets/Ball/Danger/1.png"), load("res://assets/Ball/Danger/2.png"), load("res://assets/Ball/Danger/3.png")]
+	break_textures = [load("res://assets/Ball/Break/0.png"), load("res://assets/Ball/Break/1.png"), load("res://assets/Ball/Break/2.png"), load("res://assets/Ball/Break/3.png"), load("res://assets/Ball/Break/4.png")]
 	
 	# Start floating effect
 	if is_floating:

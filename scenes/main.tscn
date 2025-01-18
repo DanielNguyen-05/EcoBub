@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=38 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="Script" path="res://scripts/BGMusic.gd" id="2_3w3vu"]
@@ -27,6 +27,10 @@
 [ext_resource type="Texture2D" uid="uid://bg4wqe8g5730k" path="res://assets/Sprite/Decrease 2.png" id="18_d64oo"]
 [ext_resource type="Script" path="res://scripts/SellButton.gd" id="20_c2s7w"]
 [ext_resource type="Texture2D" uid="uid://dfj2k4e32185x" path="res://assets/Sprite/stock price.png" id="20_vdvbn"]
+[ext_resource type="PackedScene" uid="uid://8cchwbg58eab" path="res://scenes/TECHNOLOGY.tscn" id="22_wywoi"]
+[ext_resource type="PackedScene" uid="uid://8fprdb23uv2w" path="res://scenes/CRYPTOCURRENCY.tscn" id="23_n137q"]
+[ext_resource type="PackedScene" uid="uid://bwyemcsdif36n" path="res://scenes/ENERGY.tscn" id="24_dlmhx"]
+[ext_resource type="PackedScene" uid="uid://l48u5v0tnrf7" path="res://scenes/ESTATE.tscn" id="25_40600"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8vjk"]
 
@@ -55,6 +59,14 @@ offset_bottom = 41.0
 [node name="World" type="Node2D" parent="."]
 script = ExtResource("3_b1veo")
 
+[node name="TECHNOLOGY" parent="World" instance=ExtResource("22_wywoi")]
+
+[node name="CRYPTOCURRENCY" parent="World" instance=ExtResource("23_n137q")]
+
+[node name="ENERGY" parent="World" instance=ExtResource("24_dlmhx")]
+
+[node name="ESTATE" parent="World" instance=ExtResource("25_40600")]
+
 [node name="PopupGroup" type="Node2D" parent="World"]
 
 [node name="NewsPopup" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
@@ -73,9 +85,9 @@ script = ExtResource("8_aqa8o")
 [node name="ButtonGroup" type="Node2D" parent="World"]
 
 [node name="Next" type="TextureButton" parent="World/ButtonGroup"]
-offset_left = 1516.0
+offset_left = 1523.0
 offset_top = 717.0
-offset_right = 1813.0
+offset_right = 1820.0
 offset_bottom = 847.0
 texture_normal = ExtResource("10_6tmc0")
 texture_pressed = ExtResource("9_vggae")
@@ -209,11 +221,19 @@ bus = &"News Close"
 
 [connection signal="tree_exited" from="Menu" to="." method="_on_menu_tree_exited"]
 [connection signal="pressed" from="World/ButtonGroup/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="World/ButtonGroup/Next" to="World/TECHNOLOGY" method="_on_next_pressed"]
+[connection signal="pressed" from="World/ButtonGroup/Next" to="World/CRYPTOCURRENCY" method="_on_next_pressed"]
+[connection signal="pressed" from="World/ButtonGroup/Next" to="World/ENERGY" method="_on_next_pressed"]
+[connection signal="pressed" from="World/ButtonGroup/Next" to="World/ESTATE" method="_on_next_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Sell" to="." method="_on_sell_pressed"]
 [connection signal="sell_confirmed" from="World/ButtonGroup/Sell" to="." method="_on_sell_sell_confirmed"]
 [connection signal="buy_confirmed" from="World/ButtonGroup/Buy" to="." method="_on_buy_buy_confirmed"]
 [connection signal="pressed" from="World/ButtonGroup/Buy" to="." method="_on_buy_pressed"]
 [connection signal="item_selected" from="World/ButtonGroup/StockInfoDropdown" to="." method="_on_stock_info_dropdown_item_selected"]
+[connection signal="item_selected" from="World/ButtonGroup/StockInfoDropdown" to="World/TECHNOLOGY" method="_on_stock_info_dropdown_item_selected"]
+[connection signal="item_selected" from="World/ButtonGroup/StockInfoDropdown" to="World/CRYPTOCURRENCY" method="_on_stock_info_dropdown_item_selected"]
+[connection signal="item_selected" from="World/ButtonGroup/StockInfoDropdown" to="World/ENERGY" method="_on_stock_info_dropdown_item_selected"]
+[connection signal="item_selected" from="World/ButtonGroup/StockInfoDropdown" to="World/ESTATE" method="_on_stock_info_dropdown_item_selected"]
 [connection signal="pressed" from="World/ButtonGroup/Portfolio" to="." method="_on_portfolio_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Increase" to="." method="_on_increase_pressed"]
 [connection signal="pressed" from="World/ButtonGroup/Decrease" to="." method="_on_decrease_pressed"]
