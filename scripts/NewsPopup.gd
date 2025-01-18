@@ -2,7 +2,7 @@ extends Panel
 
 @onready var ntitle = get_node("Title")
 @onready var ncontent = get_node("Content")
-@onready var news_close = $"../Sounds/News Close"
+@onready var news_close = $"../../Sounds/News Close"
 
 func _ready():
 	hide() # Hide initially

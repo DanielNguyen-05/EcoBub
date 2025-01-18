@@ -1,9 +1,6 @@
 extends Panel
 
-@onready var stock_option = $"../ButtonGroup/StockInfoDropdown"
-@onready var clickable = $"../Sounds/Click Button"
-@onready var non_clickable = $"../Sounds/Non Clickable Button"
-
+@onready var stock_option = $"../../ButtonGroup/StockInfoDropdown"
 
 signal buy_confirmed(quantity)
 
@@ -25,23 +22,23 @@ func _on_ok_button_pressed() -> void:
 	var selected_stock = stock_option.get_selected_id()
 	if quantity_text.is_valid_int() && selected_stock != -1:
 		var quantity = int(quantity_text)
-		var price = MarketManager.stock_list[selected_stock]["current price"]
+		var price = MarketManager.stock_list[selected_stock]["current_price"]
 		
 		if quantity > 0 && price * quantity <= MarketManager.cash:
 			emit_signal("buy_confirmed", quantity)
-			clickable.play()
+			$"../../Sounds/Clickable".play()
 			hide()
 		else:
-			non_clickable.play()
+			$"../../Sounds/Non-Clickable".play()
 			# Show error message (e.g., in a label) that it needs to > 0
 			pass
 	else:
-		non_clickable.play()
+		$"../../Sounds/Non-Clickable".play()
 		# Show error message (e.g., in a label) for invalid input
 		pass
 	pass # Replace with function body.
 
 func _on_cancel_button_pressed() -> void:
-	clickable.play()
+	$"../../Sounds/Clickable".play()
 	hide()
 	pass # Replace with function body.

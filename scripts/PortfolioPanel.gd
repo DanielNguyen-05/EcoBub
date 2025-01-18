@@ -24,7 +24,7 @@ func update_portfolio(cash, owned_stocks):
 		
 		for market_stocks in MarketManager.stock_list:
 			if market_stocks["name"] == stock_name.name:
-				price = market_stocks["current price"]
+				price = market_stocks["current_price"]
 				pass
 		
 		var value = shares * price
@@ -56,6 +56,6 @@ func update_portfolio(cash, owned_stocks):
 
 
 func _on_confirm_button_pressed():
-	$"../Sounds/Click Button".play()
+	$"../../Sounds/Clickable".play()
 	hide()
 	pass

@@ -65,7 +65,7 @@ func spawn_stock_bubble(name, current_price, growth_rate, volatility):
 
 # --- Player Actions ---
 func buy_stock(stockid: int, shares_quantity: int):
-	cash -= shares_quantity * stock_list[stockid]["current price"]
+	cash -= shares_quantity * stock_list[stockid]["current_price"]
 	
 	var stock_name = stock_list[stockid]["name"]
 	
@@ -81,13 +81,12 @@ func buy_stock(stockid: int, shares_quantity: int):
 	
 	portfolio_button.text = str(cash) + "$"
 	
-	for owned in owned_stocks:
-		print("Buy " + str(owned))
+	sell_popup.update_owned(owned_stocks)
 	
 	return # Implement later
 
 func sell_stock(stockid: int, shares_quantity: int):
-	cash += shares_quantity * stock_list[stockid]["current price"]
+	cash += shares_quantity * stock_list[stockid]["current_price"]
 	
 	var stock_name = stock_list[stockid]["name"]
 	
@@ -113,8 +112,11 @@ func next_day() -> void:
 		current_news_index = 0
 	news_ticker.update_news(news_list[current_news_index].title, news_list[current_news_index].content) # Update news ticker
 	# Trigger a market crash if the conditions are met
-
 	pass
+	
+func get_owned_stocks():
+	print(owned_stocks)
+	return owned_stocks
 
 func update_stock_prices(stockId, delta):
 	stock_list[stockId].current_price += stock_list[stockId].growth_rate * delta
@@ -129,7 +131,7 @@ func _on_buy_pressed() -> void:
 	buy_popup.update_stock_name()
 	buy_popup.show()
 	print("Buy pressed")
-	$"Sounds/Click Button".play()
+	$World/Sounds/Clickable.play()
 	return # Replace with function body.
 
 
@@ -137,14 +139,14 @@ func _on_sell_pressed() -> void:
 	sell_popup.update_stock_name()
 	sell_popup.show()
 	print("Sell pressed")
-	$"Sounds/Click Button".play()
+	$World/Sounds/Clickable.play()
 	return # Replace with function body.
 
 func _on_next_pressed() -> void:
 	print("Next pressed")
-	$"Sounds/Click Button".play()
+	$World/Sounds/Clickable.play()
+	next_day()
 	return
-
 
 func _on_stock_info_dropdown_item_selected(index: int) -> void:
 	selected_stock = index
@@ -166,3 +168,8 @@ func _on_portfolio_pressed() -> void:
 	portfolio.update_portfolio(cash, owned_stocks)
 	portfolio.show()
 	return # Replace with function body.
+
+func _on_menu_tree_exited() -> void:
+	news_ticker.show()
+	World.show()
+	pass # Replace with function body.

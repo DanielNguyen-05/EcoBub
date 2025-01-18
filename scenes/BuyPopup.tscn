@@ -3,54 +3,52 @@
 [ext_resource type="Script" path="res://scripts/BuyPopup.gd" id="1_7h5xr"]
 
 [node name="BuyPopup" type="Panel"]
-anchors_preset = -1
 offset_right = 1406.0
 offset_bottom = 431.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 0
 script = ExtResource("1_7h5xr")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 283.0
-offset_top = 62.0
-offset_right = 809.0
-offset_bottom = 131.0
+offset_left = 268.0
+offset_top = 166.0
+offset_right = 794.0
+offset_bottom = 235.0
 theme_override_font_sizes/font_size = 50
 text = "Enter quantity to buy:"
 
 [node name="Stock Name" type="Label" parent="."]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 21.0
-offset_right = 224.0
-offset_bottom = 51.0
+offset_left = 272.0
+offset_top = 63.0
+offset_right = 454.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 48
 text = "Stock: "
 
 [node name="LineEdit" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 840.0
-offset_top = 46.0
-offset_right = 1165.0
-offset_bottom = 130.0
+offset_left = 825.0
+offset_top = 150.0
+offset_right = 1150.0
+offset_bottom = 234.0
 theme_override_font_sizes/font_size = 50
 
 [node name="OkButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 867.0
-offset_top = 252.0
-offset_right = 1191.0
-offset_bottom = 338.0
+offset_left = 801.0
+offset_top = 297.0
+offset_right = 1125.0
+offset_bottom = 383.0
 theme_override_font_sizes/font_size = 50
 text = "Confirm"
 
 [node name="CancelButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 406.0
-offset_top = 248.0
-offset_right = 691.0
-offset_bottom = 342.0
+offset_left = 334.0
+offset_top = 294.0
+offset_right = 619.0
+offset_bottom = 388.0
 theme_override_font_sizes/font_size = 50
 text = "Cancel"
 

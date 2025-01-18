@@ -6,6 +6,15 @@
 offset_bottom = 8.0
 script = ExtResource("1_rmsvd")
 
+[node name="Stock Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 16.0
+offset_right = 941.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 50
+text = "Stock:"
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 409.0
