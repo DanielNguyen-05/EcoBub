@@ -12,7 +12,7 @@ func update_news(title, content):
 
 func update_ticker():
 	var label = $NewsTickerLabel # Assuming you named the RichTextLabel "NewsTickerLabel"
-	label.text = news.title + ": " + news.content
+	label.text = news.title
 
 func _on_read_more_pressed() -> void:
 	news_popup.set_news_data(news.title, news.content)
