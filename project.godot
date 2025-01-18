@@ -27,6 +27,10 @@ window/size/viewport_height=1080
 
 project/assembly_name="Bubble"
 
+[gui]
+
+theme/custom_font="res://assets/Fonts/vhs_gothic/vhs-gothic.ttf"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

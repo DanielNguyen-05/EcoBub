@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=21 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="Script" path="res://scripts/BGMusic.gd" id="2_3w3vu"]
@@ -12,8 +12,13 @@
 [ext_resource type="Script" path="res://scripts/PortfolioPanel.gd" id="8_aqa8o"]
 [ext_resource type="Texture2D" uid="uid://dqcvnwqaxe0u6" path="res://assets/news.png" id="8_fpo17"]
 [ext_resource type="AudioStream" uid="uid://qq7547dgq1dj" path="res://assets/sfx/Button press 3.wav" id="10_2gu6w"]
+[ext_resource type="Texture2D" uid="uid://2ce0e3x3cdu4" path="res://assets/Sprite/next.png" id="10_6tmc0"]
+[ext_resource type="Texture2D" uid="uid://yfxm0tvkgy3f" path="res://assets/Sprite/sell.png" id="10_m6nbu"]
 [ext_resource type="AudioStream" uid="uid://ch4frhk1uci63" path="res://assets/sfx/Button Can't be Pressed.wav" id="11_37cs1"]
+[ext_resource type="Texture2D" uid="uid://bf1msom63342w" path="res://assets/Sprite/selldone.png" id="11_dkm2n"]
+[ext_resource type="Texture2D" uid="uid://5no5pbfykbdq" path="res://assets/Sprite/buy.png" id="12_4bndq"]
 [ext_resource type="AudioStream" uid="uid://dedw0hnvww6y" path="res://assets/sfx/Newspaper Open.mp3" id="12_qslfr"]
+[ext_resource type="Texture2D" uid="uid://ckfei36lcu7yi" path="res://assets/Sprite/buydone.png" id="13_pekh2"]
 [ext_resource type="AudioStream" uid="uid://cdxtxs5s1ooa4" path="res://assets/sfx/Newspaper Close.mp3" id="13_q52i6"]
 
 [node name="Main" type="Node2D"]
@@ -42,10 +47,10 @@ offset_right = 118.0
 offset_bottom = 245.0
 
 [node name="NewsPopup" parent="World/PopupGroup" instance=ExtResource("4_vdd20")]
-offset_left = 429.0
-offset_top = 318.0
-offset_right = 1456.0
-offset_bottom = 526.0
+offset_left = 95.0
+offset_top = 82.0
+offset_right = 1819.0
+offset_bottom = 982.0
 
 [node name="PortfolioPanel" parent="World/PopupGroup" instance=ExtResource("7_sbtu7")]
 offset_left = 175.0
@@ -56,26 +61,28 @@ script = ExtResource("8_aqa8o")
 
 [node name="ButtonGroup" type="Node2D" parent="World"]
 
-[node name="Next" type="Button" parent="World/ButtonGroup"]
-offset_left = 782.0
-offset_top = 717.0
-offset_right = 948.0
-offset_bottom = 853.0
-text = "Next Day"
+[node name="Next" type="TextureButton" parent="World/ButtonGroup"]
+offset_left = 785.0
+offset_top = 692.0
+offset_right = 1091.0
+offset_bottom = 937.0
+texture_normal = ExtResource("10_6tmc0")
 
-[node name="Sell" type="Button" parent="World/ButtonGroup"]
-offset_left = 1230.0
-offset_top = 728.0
-offset_right = 1405.0
-offset_bottom = 860.0
-text = "Sell"
+[node name="Sell" type="TextureButton" parent="World/ButtonGroup"]
+offset_left = 1252.0
+offset_top = 718.0
+offset_right = 1456.0
+offset_bottom = 922.0
+texture_normal = ExtResource("10_m6nbu")
+texture_pressed = ExtResource("11_dkm2n")
 
-[node name="Buy" type="Button" parent="World/ButtonGroup"]
-offset_left = 331.0
-offset_top = 712.0
-offset_right = 554.0
-offset_bottom = 877.0
-text = "Buy"
+[node name="Buy" type="TextureButton" parent="World/ButtonGroup"]
+offset_left = 426.0
+offset_top = 718.0
+offset_right = 649.0
+offset_bottom = 922.0
+texture_normal = ExtResource("12_4bndq")
+texture_pressed = ExtResource("13_pekh2")
 
 [node name="StockInfoDropdown" type="OptionButton" parent="World/ButtonGroup"]
 offset_left = 1772.0

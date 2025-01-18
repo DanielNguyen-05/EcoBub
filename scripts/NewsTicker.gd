@@ -19,4 +19,10 @@ func _on_read_more_pressed() -> void:
 	news_open.play(0.5)
 	news_popup.set_news_data(news.title, news.content)
 	news_popup.show()
+	
+	var label = $NewsTickerLabel # Assuming you named the RichTextLabel "NewsTickerLabel"
+	label.hide()
+	
+	var buttons = get_node("../ButtonGroup")
+	buttons.hide()
 	pass # Replace with function body.
