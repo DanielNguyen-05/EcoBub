@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b31usg7j8hiog"]
+
+[ext_resource type="AudioStream" uid="uid://qq7547dgq1dj" path="res://assets/sfx/Button press 3.wav" id="1_8cpu2"]
+
+[node name="Click Button" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_8cpu2")
+bus = &"Click"

@@ -29,10 +29,10 @@ text = "Đây là nội dung của báo lá cải, mọi người xem qua nha. H
 
 [node name="Close" type="Button" parent="."]
 layout_mode = 0
-offset_left = 426.0
-offset_top = 151.0
-offset_right = 520.0
-offset_bottom = 192.0
+offset_left = 439.0
+offset_top = 148.0
+offset_right = 533.0
+offset_bottom = 189.0
 text = "Close"
 
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

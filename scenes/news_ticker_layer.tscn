@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://duor5lu3htgay"]
+
+[sub_resource type="GDScript" id="GDScript_3kppi"]
+script/source = "extends CanvasLayer
+
+var news_item = {\"title\": \"title\", \"content\": \"content\"}
+@onready var news_popup = get_node(\"../NewsPopup\")
+
+func _ready():
+	update_news(\"Market in Turmoil\", \"Experts warn of a potential bubble...\")
+
+func update_news(title, content):
+	news_item = {\"title\": title, \"content\": content}
+	update_ticker()
+
+func update_ticker():
+	var label = $NewsTickerLabel # Assuming you named the RichTextLabel \"NewsTickerLabel\"
+	label.text = news_item.title + \": \" + news_item.content
+
+func _on_read_more_pressed() -> void:
+	news_popup.set_news_data(news_item.title, news_item.content)
+	news_popup.show()
+	pass # Replace with function body.
+"
+
+[node name="NewsTickerLayer" type="CanvasLayer"]
+script = SubResource("GDScript_3kppi")
+
+[node name="NewsTickerLabel" type="RichTextLabel" parent="."]
+offset_left = 362.0
+offset_top = 968.0
+offset_right = 1130.0
+offset_bottom = 1026.0
+theme_override_font_sizes/normal_font_size = 20
+text = "This is the news"
+
+[node name="ReadMore" type="Button" parent="."]
+offset_left = 1025.0
+offset_top = 964.0
+offset_right = 1168.0
+offset_bottom = 1014.0
+text = "Read More"
+
+[connection signal="pressed" from="ReadMore" to="." method="_on_read_more_pressed"]

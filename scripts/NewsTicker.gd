@@ -15,6 +15,8 @@ func update_ticker():
 	label.text = news_item.title + ": " + news_item.content
 
 func _on_read_more_pressed() -> void:
+	print("Read More Pressed")
+	$"../Click Button".play()
 	news_popup.set_news_data(news_item.title, news_item.content)
 	news_popup.show()
 	pass # Replace with function body.

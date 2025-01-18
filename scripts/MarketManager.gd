@@ -11,7 +11,6 @@ var stock_list = [
 @onready var buy_popup = get_node("BuyPopup")
 @onready var stock_info_dropdown = get_node("ButtonGroup/StockInfoDropdown")
 
-
 var selected_stock = null
 
 func _ready():	
@@ -42,13 +41,19 @@ func trigger_market_crash():
 func _on_buy_pressed() -> void:
 	buy_popup.show()
 	print("Buy pressed")
+	$"Click Button".play()
 	pass # Replace with function body.
 
 
 func _on_sell_pressed() -> void:
 	print("Sell pressed")
+	$"Click Button".play()
 	pass # Replace with function body.
 
+func _on_next_pressed() -> void:
+	print("Next pressed")
+	$"Click Button".play()
+	pass # Replace with function body.
 
 func _on_stock_info_dropdown_item_selected(index: int) -> void:
 	selected_stock = index

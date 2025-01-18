@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnht67upk063y"]
+[gd_scene load_steps=8 format=3 uid="uid://dnht67upk063y"]
 
 [ext_resource type="Script" path="res://scripts/MarketManager.gd" id="1_g7qtt"]
 [ext_resource type="PackedScene" uid="uid://b8ektgpchyvvi" path="res://scenes/BuyPopup.tscn" id="2_iu3ry"]
-[ext_resource type="Script" path="res://scenes/NewsTicker.gd" id="3_7kh45"]
+[ext_resource type="PackedScene" uid="uid://duor5lu3htgay" path="res://scenes/news_ticker_layer.tscn" id="3_7vwx8"]
+[ext_resource type="PackedScene" uid="uid://b31usg7j8hiog" path="res://scenes/click_button.tscn" id="3_flcfr"]
+[ext_resource type="Script" path="res://scripts/NewsTicker.gd" id="4_qyicq"]
 [ext_resource type="PackedScene" uid="uid://brbqxqii34i3e" path="res://scenes/NewsPopup.tscn" id="4_vdd20"]
+[ext_resource type="Script" path="res://scripts/bg_music.gd" id="7_1nra2"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_g7qtt")
@@ -43,28 +46,23 @@ popup/item_0/text = "AAA"
 popup/item_1/text = "BBB"
 popup/item_1/id = 1
 
-[node name="NewsTickerLayer" type="CanvasLayer" parent="."]
-script = ExtResource("3_7kh45")
-
-[node name="NewsTickerLabel" type="RichTextLabel" parent="NewsTickerLayer"]
-offset_left = 362.0
-offset_top = 968.0
-offset_right = 1130.0
-offset_bottom = 1026.0
-theme_override_font_sizes/normal_font_size = 20
-text = "This is the news"
-
-[node name="ReadMore" type="Button" parent="NewsTickerLayer"]
-offset_left = 1025.0
-offset_top = 964.0
-offset_right = 1168.0
-offset_bottom = 1014.0
-text = "Read More"
+[node name="NewsTickerLayer" parent="." instance=ExtResource("3_7vwx8")]
+script = ExtResource("4_qyicq")
 
 [node name="NewsPopup" parent="." instance=ExtResource("4_vdd20")]
+offset_left = 424.0
+offset_top = 325.0
+offset_right = 1451.0
+offset_bottom = 533.0
+
+[node name="Click Button" parent="." instance=ExtResource("3_flcfr")]
+
+[node name="BG Music" type="AudioStreamPlayer2D" parent="."]
+bus = &"BG"
+script = ExtResource("7_1nra2")
 
 [connection signal="buy_confirmed" from="BuyPopup" to="." method="_on_buy_popup_buy_confirmed"]
+[connection signal="pressed" from="ButtonGroup/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="ButtonGroup/Sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="ButtonGroup/Buy" to="." method="_on_buy_pressed"]
 [connection signal="item_selected" from="ButtonGroup/StockInfoDropdown" to="." method="_on_stock_info_dropdown_item_selected"]
-[connection signal="pressed" from="NewsTickerLayer/ReadMore" to="NewsTickerLayer" method="_on_read_more_pressed"]
